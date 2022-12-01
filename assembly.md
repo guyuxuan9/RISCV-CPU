@@ -1,16 +1,18 @@
 main:
+    addi s0, zero, 0x00     # initialize s0 to zero
+    addi a0, zero, 0x00     # initialize a0 to zero
+    addi t0, zero, 0x08     # initialize t0 to 0x08
+    JAL a3, iloop
     
+    
+SL:
+    SLLI s0, s0, 0x01       # shift left logical by 1
+    addi s0, s0, 0x01
 
-f1loop:
-    addi a1, zero, 0x00 #a1 = 8'b0
-    addi a1, a1, 0x01
-    addi a1, a1, 0x02
-    addi a1, a1, 0x04
-    addi a1, a1, 0x08
-    addi a1, a1, 0x10
-    addi a1, a1, 0x20
-    addi a1, a1, 0x40
-    addi a1, a1, 0x80
+    BEQ zero, 0x00, a1
 
 iloop:
-    jal a0, f1loop
+    addi a0, a0, 1          # increment 1
+    JAL a1, SL              # JAL
+    BEQ a0, t0, a3
+    
