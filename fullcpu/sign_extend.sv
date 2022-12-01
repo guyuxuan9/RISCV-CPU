@@ -3,19 +3,19 @@ module sign_extend #(
 )(
     input logic     [address_width-1:0]        instr,  //output from Instr Mem
     input logic     [2:0]                      ImmSrc,
-    output logic    [address_width-1:0]        ImmOp   //input to PC and ALUsrc mux
+    output logic    [address_width-1:0]        ImmExt   //input to PC and ALUsrc mux
 );
 
 always_comb begin
     if (ImmSrc == 3'b000)
         begin
-        ImmOp[31:12] = {20{instr[address_width-1]}};
-        ImmOp[11:0] = instr[address_width-1:20];
+        ImmExt[31:12] = {20{instr[address_width-1]}};
+        ImmExt[11:0] = instr[address_width-1:20];
         end
     else if (ImmSrc == 3'b010)
         begin
-        ImmOp[31:13] = {19{instr[address_width-1]}};
-        ImmOp[12:0] = {instr[address_width-1], instr[7], instr[30:25], instr[11:8],1'b0};
+        ImmExt[31:13] = {19{instr[address_width-1]}};
+        ImmExt[12:0] = {instr[address_width-1], instr[7], instr[30:25], instr[11:8],1'b0};
         end    
 end
 

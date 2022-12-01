@@ -2,23 +2,23 @@ module alu #(
     parameter DATA_WIDTH = 32
 )(
     // interface signals
-    input logic        [DATA_WIDTH-1:0]         ALUop1,       // rd1
-    input logic        [DATA_WIDTH-1:0]         ALUop2,       
-    input logic        [2:0]                    ALUCtrl,      
-    output logic                                eq,
-    output logic       [DATA_WIDTH-1:0]         out           // ALUout
+    input logic        [DATA_WIDTH-1:0]         SrcA,       // rd1
+    input logic        [DATA_WIDTH-1:0]         SrcB,       
+    input logic        [2:0]                    ALUControl,      
+    output logic                                Zero,
+    output logic       [DATA_WIDTH-1:0]         ALUResult           // ALUout
 );
 
     always_comb begin
         // SUM
-        if(ALUCtrl == 3'b000)
-            out = ALUop1 + ALUop2;
+        if(on == 3'b000)
+            ALUResult = SrcA + SrcB;
         
         // EQ
-        if(ALUop1 == ALUop2)
-            eq = 1;
+        if(SrcA == SrcB)
+            Zero = 1;
         else 
-            eq = 0;
+            Zero = 0;
         
     end
 

@@ -2,7 +2,7 @@ module control_unit #(
     parameter address_width = 7
 )(
     input logic      [address_width-1:0]   instr,  //output from Instr Mem
-    input logic         EQ,
+    input logic         Zero,
     output logic        RegWrite,
     output logic       [2:0] ALUctrl,
     output logic        ALUsrc,
@@ -28,7 +28,7 @@ always_comb begin
         ALUsrc = 1'b1;
         end
     if(instr[6:0] == 7'b1100011) // bne
-        if(EQ == 1'b0)
+        if(Zero == 1'b0)
         begin
             ImmSrc = 3'b010;
             PCsrc = 1'b1;

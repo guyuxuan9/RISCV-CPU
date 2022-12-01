@@ -4,13 +4,13 @@ module regfile #(
 )(
     // interface signals
     input logic                           clk,
-    input logic   [ADDRESS_WIDTH-1:0]     addr1,     // rs1
-    input logic   [ADDRESS_WIDTH-1:0]     addr2,     // rs2
-    input logic   [ADDRESS_WIDTH-1:0]     addr3,     // rd
-    input logic                           we3,       // RegWrite
-    input logic   [DATA_WIDTH-1:0]        wd3,       // ALUout
-    output logic  [DATA_WIDTH-1:0]        rd1,
-    output logic  [DATA_WIDTH-1:0]        rd2,
+    input logic   [ADDRESS_WIDTH-1:0]     A1,     // rs1
+    input logic   [ADDRESS_WIDTH-1:0]     A2,     // rs2
+    input logic   [ADDRESS_WIDTH-1:0]     A3,     // rd
+    input logic                           WE3,       // RegWrite
+    input logic   [DATA_WIDTH-1:0]        WD3,       // ALUout
+    output logic  [DATA_WIDTH-1:0]        RD1,
+    output logic  [DATA_WIDTH-1:0]        RD2,
     output logic  [DATA_WIDTH-1:0]        a0
 );
 
@@ -18,12 +18,12 @@ module regfile #(
     logic [DATA_WIDTH-1:0] ram_array [2**ADDRESS_WIDTH-1:0];
 
     always_ff @(posedge clk) begin
-        if (we3) ram_array[addr3] <= wd3; 
+        if (WE3) ram_array[A3] <= WD3; 
     end
 
     always_comb begin
-        rd1 = (addr1 == 0) ? 0 : ram_array[addr1];
-        rd2 = (addr2 == 0) ? 0 : ram_array[addr2];
+        RD1 = (A1 == 0) ? 0 : ram_array[A1];
+        RD2 = (A2 == 0) ? 0 : ram_array[A2];
         a0 = ram_array[10];
     end
 
