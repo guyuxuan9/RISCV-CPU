@@ -9,7 +9,8 @@ module control_unit #(
     output logic       [2:0] ImmSrc,
     output logic        PCsrc,
     output logic        MemWrite,
-    output logic        ResultSrc
+    output logic        ResultSrc,
+    output logic        jalmuxSel
 );
 
 always_comb begin
@@ -20,6 +21,7 @@ always_comb begin
     PCsrc = 1'b0; 
     MemWrite = 1'b0;
     ResultSrc = 1'b0;
+    jalmuxSel = 1'b0;
     if(instr[6:0] == 7'b0010011) // addi
         begin 
         RegWrite = 1'b1;
@@ -36,8 +38,15 @@ always_comb begin
     if(instr[6:0] == 7'b0100011) // sw 
         MemWrite = 1'b1;
     if(instr[6:0] == 7'b0000011) // lw 
+        begin
         ResultSrc = 1'b1;
         RegWrite = 1'b1;
+        end
+    if(instr[6:0] == 7'b1101111) // jal
+        begin
+        ImmSrc = 3'b100;
+        jalmuxSel = 1'b1;
+        end
 end 
 
 endmodule

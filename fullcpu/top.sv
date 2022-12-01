@@ -8,7 +8,8 @@ module top#(
     input logic [DATAOUT_WIDTH-1:0]        ImmOp, // output from "sign extend" block
   //  output logic [ADDRESS_WIDTH-1:0]       PC,
   //  input logic [ADDRESS_WIDTH-1:0]        A,
-    output logic [DATAOUT_WIDTH-1:0]       RD
+    output logic [DATAOUT_WIDTH-1:0]       RD,
+    output logic [ADDRESS_WIDTH-1:0]       PC_out
 );
 
 logic [ADDRESS_WIDTH-1:0]        A;
@@ -26,4 +27,5 @@ instr_mem mem(
     .RD(RD)
 );
 
+assign PC_out = A;
 endmodule

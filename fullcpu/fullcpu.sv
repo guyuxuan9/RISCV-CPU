@@ -16,13 +16,15 @@ logic ALUsrc;
 logic [2:0] ImmSrc;
 logic MemWrite;
 logic ResultSrc;
+logic PC;
 
 top blue(
     .PCsrc(PCsrc),
     .clk(clk),
     .rst(rst),
     .ImmOp(ImmOp),
-    .RD(Instr)
+    .RD(Instr), // output
+    .PC_out(PC) // output 
 );
 
 control_unit controlunit(
@@ -49,6 +51,7 @@ topregalu topregalu (
     .rs2(Instr[24:20]),
     .rd(Instr[11:7]),
     .RegWrite(RegWrite),
+    .PC(PC),
     .ALUsrc(ALUsrc),
     .ResultSrc(ResultSrc),
     .MemWrite(MemWrite),
