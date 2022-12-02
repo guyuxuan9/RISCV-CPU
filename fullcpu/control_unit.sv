@@ -1,19 +1,17 @@
 module control_unit #(
     parameter ADDRESS_WIDTH = 32
 )(
-    input logic      [6:0]          op,  // output from Instr Mem
-    input logic      [3:0]      funct3,
-    input logic                 funct7,  // bit 30 of the instr
-    input logic                     EQ,
-    input logic                   Zero,
-    output logic              RegWrite,
-    output logic     [2:0]     ALUctrl,
-    output logic                ALUsrc,
-    output logic     [2:0]      ImmSrc,
-    output logic                 PCsrc,
-    output logic              MemWrite,
-    output logic              ResultSrc,
-    output logic              jalmuxSel
+    input logic      [6:0] op,  //output from Instr Mem
+    input logic      [3:0] funct3,
+    input logic         funct7,
+    input logic         EQ,
+    output logic        RegWrite,
+    output logic       [2:0] ALUctrl,
+    output logic        ALUsrc,
+    output logic       [2:0] ImmSrc,
+    output logic        PCsrc,
+    output logic        MemWrite,
+    output logic        ResultSrc
 );
 
 always_comb begin
@@ -25,6 +23,7 @@ always_comb begin
     PCsrc = 1'b0; 
     MemWrite = 1'b0;
     ResultSrc = 1'b0;
+    jalmuxSel = 1'b0;
 
     /* if(op == 7'b0110011) // 3 Register Instructions
         if(funct7 == 0)
@@ -82,58 +81,24 @@ always_comb begin
 
     if(op == 7'b1101111) // jump and link */
 
-    case (op)
-        7'b0010011: // immediate instructions
-            case(funct3)
-                3'b000: // addi
-                    begin 
-                        RegWrite = 1'b1;
-                        ImmSrc = 3'b000;
-                        ALUctrl = 3'b000;
-                        ALUsrc = 1'b1;
-                    end
-                3'b001: // sll
-                    
-            endcase
-        
-        7'b1100011: // bne
-            if(EQ == 1'b0)
-            begin
-                ImmSrc = 3'b010;
-                PCsrc = 1'b1;
-            end
-        
-        7'b0100011: // store instructions
-            case(funct3)
-                3'b010: // store word
-                    MemWrite = 1'b1;
-            endcase
-        
-        7'b0000011: // load instructions
-            case(funct3) 
-                3'b010: // load word
-                begin
-                    ResultSrc = 1'b1;
-                    RegWrite = 1'b1;
-                end
-            endcase
-
-        7'b1100011: // branch instructions
-            case(funct3)
-                3'b000: // beq
-
-                3'b001: // bne
-
-
-            endcase
-
-        7'b1101111: // jal
-            begin
-                ImmSrc = 3'b100;
-                jalmuxSel = 1'b1;
-            end
-    endcase
-
+    if(instr[6:0] == 7'b0010011) // addi
+        begin 
+        RegWrite = 1'b1;
+        ImmSrc = 3'b000;
+        ALUctrl = 3'b000;
+        ALUsrc = 1'b1;
+        end
+    if(instr[6:0] == 7'b1100011) // bne
+        if(EQ == 1'b0)
+        begin
+            ImmSrc = 3'b010;
+            PCsrc = 1'b1;
+        end
+    if(instr[6:0] == 7'b0100011) // sw 
+        MemWrite = 1'b1;
+    if(instr[6:0] == 7'b0000011) // lw 
+        ResultSrc = 1'b1;
+        RegWrite = 1'b1;
 end 
 
 endmodule
