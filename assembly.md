@@ -1,5 +1,5 @@
 main:
-    addi s0, zero, 0x00     # initialize s0 to zero
+   addi s0, zero, 0x00     # initialize s0 to zero
     addi a0, zero, 0x00     # initialize a0 to zero
     addi t0, zero, 0x08     # initialize t0 to 0x08
     JAL a3, iloop
