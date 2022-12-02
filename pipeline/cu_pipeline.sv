@@ -9,7 +9,8 @@ module control_unit #(
     output logic     [2:0]     ALUctrl,
     output logic                ALUsrc,
     output logic     [2:0]      ImmSrc,
-    output logic                 PCsrc,
+    output logic                Branch,
+    output logic                  Jump,
     output logic              MemWrite,
     output logic             ResultSrc,
     output logic             jalmuxSel
@@ -106,11 +107,11 @@ always_comb begin
 
                 3'b000: // beq
                     if (Zero == 1'b1)
-                        begin
+                    begin
                         PCsrc = 1'b1;
                         ImmSrc = 3'b010;
-                        end
-                    else
+                    end
+                    else:
                         PCsrc = 1'b0;
 
             endcase
@@ -134,8 +135,9 @@ always_comb begin
             begin
                 ImmSrc = 3'b100;
                 jalmuxSel = 1'b1;
-                RegWrite = 1'b1;
             end
+        
+    endcase
     endcase
 end 
 
