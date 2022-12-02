@@ -79,7 +79,7 @@ always_comb begin
     if(op == 7'b0110111) // load upper immediate
 
     if(op == 7'b1100111) 
-        if(funct3 == 3'b000) // jump and link register
+        if(funct3 == 3'b000) // jump and link register*/
     
     case (op)
         7'b0010011: // register instructions
