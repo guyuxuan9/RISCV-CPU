@@ -28,8 +28,8 @@ top blue(
 );
 
 control_unit controlunit(
-    .instr(Instr[6:0]),
-    .EQ(EQ),
+    .op(Instr[6:0]),
+    .Zero(EQ),
     .RegWrite(RegWrite),
     .ALUctrl(ALUctrl),
     .ALUsrc(ALUsrc),
