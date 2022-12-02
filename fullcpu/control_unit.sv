@@ -1,20 +1,22 @@
 module control_unit #(
     parameter ADDRESS_WIDTH = 32
 )(
-    input logic      [6:0] op,  //output from Instr Mem
-    input logic      [3:0] funct3,
-    input logic         funct7,
-    input logic         EQ,
-    output logic        RegWrite,
-    output logic       [2:0] ALUctrl,
-    output logic        ALUsrc,
-    output logic       [2:0] ImmSrc,
-    output logic        PCsrc,
-    output logic        MemWrite,
-    output logic        ResultSrc
+    input logic      [6:0]          op,  //output from Instr Mem
+    input logic      [3:0]      funct3,
+    input logic                 funct7,
+    input logic                   Zero,
+    output logic              RegWrite,
+    output logic     [2:0]     ALUctrl,
+    output logic                ALUsrc,
+    output logic     [2:0]      ImmSrc,
+    output logic                 PCsrc,
+    output logic              MemWrite,
+    output logic             ResultSrc,
+    output logic             jalmuxSel
 );
 
 always_comb begin
+
     // Initialising Outputs
     RegWrite = 1'b0;
     ImmSrc = 3'b000;
@@ -80,7 +82,7 @@ always_comb begin
         if(funct3 == 3'b000) // jump and link register
 
     if(op == 7'b1101111) // jump and link */
-
+        
     if(instr[6:0] == 7'b0010011) // addi
         begin 
         RegWrite = 1'b1;
