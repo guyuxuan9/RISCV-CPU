@@ -15,6 +15,13 @@ int main(int argc, char **argv, char **env) {
   VerilatedVcdC* tfp = new VerilatedVcdC;
   top->trace (tfp, 99);
   tfp->open ("fullcpu.vcd");
+
+  /*
+  // init Vbuddy
+  if (vbdOpen()!=1) return(-1);
+  vbdHeader("L3T1: Random Sequence");
+  vbdSetMode(1);        // Flag mode set to one-shot
+  */
  
   top->rst = 0;
   top->clk = 1;
