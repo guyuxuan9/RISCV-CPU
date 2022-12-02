@@ -9,7 +9,7 @@ module fullcpu#(
 logic PCsrc;
 logic [DATA_WIDTH-1:0] ImmOp;
 logic [DATA_WIDTH-1:0] Instr;
-logic EQ;
+logic Zero;
 logic RegWrite;
 logic [2:0] ALUctrl;
 logic ALUsrc;
@@ -17,6 +17,7 @@ logic [2:0] ImmSrc;
 logic MemWrite;
 logic ResultSrc;
 logic PC;
+logic jalmuxSel;
 
 top blue(
     .PCsrc(PCsrc),
@@ -29,20 +30,23 @@ top blue(
 
 control_unit controlunit(
     .op(Instr[6:0]),
-    .Zero(EQ),
+    .funct3(Instr[14:12]),
+    .funct7(Instr[30]),
+    .Zero(Zero),
     .RegWrite(RegWrite),
     .ALUctrl(ALUctrl),
     .ALUsrc(ALUsrc),
     .ImmSrc(ImmSrc),
     .PCsrc(PCsrc),
     .MemWrite(MemWrite),
-    .ResultSrc(ResultSrc)
+    .ResultSrc(ResultSrc),
+    .jalmuxSel(jalmuxSel)
 );
 
 sign_extend signextend (
     .instr(Instr),
     .ImmSrc(ImmSrc),
-    .ImmOp(ImmOp)
+    .ImmExt(ImmOp)
 );
 
 topregalu topregalu (
@@ -57,8 +61,9 @@ topregalu topregalu (
     .MemWrite(MemWrite),
     .ALUCtrl(ALUctrl),
     .ImmOp(ImmOp),
-    .eq(EQ),
-    .a0(a0)
+    .eq(Zero),
+    .a0(a0),
+    .jalmuxSel(jalmuxSel)
 );
 
 endmodule 

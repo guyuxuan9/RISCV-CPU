@@ -29,22 +29,22 @@ logic [DATA_WIDTH-1:0] jalmuxOut; // output from jalmux
 
 regfile RegFile (
     .clk(clk),
-    .addr1(rs1),
-    .addr2(rs2),
-    .addr3(rd),
-    .we3(RegWrite),
-    .wd3(jalmuxOut),
-    .rd1(ALUop1),
-    .rd2(regOp2),
+    .A1(rs1),
+    .A2(rs2),
+    .A3(rd),
+    .WE3(RegWrite),
+    .WD3(jalmuxOut),
+    .RD1(ALUop1),
+    .RD2(regOp2),
     .a0(a0)
 );
 
 alu ALU(
-    .ALUop1(ALUop1),
-    .ALUop2(ALUop2),
-    .ALUCtrl(ALUCtrl),
-    .eq(eq),
-    .out(ALUout)
+    .ALUSrcA(ALUop1),
+    .ALUSrcB(ALUop2),
+    .ALUControl(ALUCtrl),
+    .Zero(eq),
+    .ALUResult(ALUout)
 );
 
 mux MUX(
@@ -56,10 +56,10 @@ mux MUX(
 
 datamem datamemory(
     .clk(clk),
-    .wr_en(MemWrite),
-    .addr(ALUout),
-    .wd(regOp2),
-    .rd(ReadData)
+    .WE(MemWrite),
+    .A(ALUout),
+    .WD(regOp2),
+    .RD(ReadData)
 );
 
 mux ResultMux(
@@ -74,6 +74,6 @@ mux jalmux(
     .d1(PC+4),
     .s(jalmuxSel),
     .out(jalmuxOut)
-)
+);
 
 endmodule

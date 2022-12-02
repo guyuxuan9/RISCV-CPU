@@ -106,11 +106,11 @@ always_comb begin
 
                 3'b000: // beq
                     if (Zero == 1'b1)
-                    begin
+                        begin
                         PCsrc = 1'b1;
                         ImmSrc = 3'b010;
-                    end
-                    else:
+                        end
+                    else
                         PCsrc = 1'b0;
 
             endcase
@@ -134,9 +134,8 @@ always_comb begin
             begin
                 ImmSrc = 3'b100;
                 jalmuxSel = 1'b1;
+                RegWrite = 1'b1;
             end
-        
-    endcase
     endcase
 end 
 
