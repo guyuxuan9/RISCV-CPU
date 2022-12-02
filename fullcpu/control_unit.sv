@@ -92,14 +92,8 @@ always_comb begin
                         ALUsrc = 1'b1;
                     end
 
-                3'b001: // SLLI
-                    begin
-                        RegWrite = 1'b1;
-                        ImmSrc = 3'b000;
-                        ALUctrl = 3'b110;
-                        ALUsrc = 1'b1;   
-                    end
-            endcase
+                3'b001: // slli
+                
 
         7'b1100011: // branch instructions
             case(funct3)
@@ -111,9 +105,11 @@ always_comb begin
                     end
 
                 3'b000: // beq
-                    if (Zero == 1'b1):
+                    if (Zero == 1'b1)
+                    begin
                         PCsrc = 1'b1;
-                        ImmSrc = 3b'010;
+                        ImmSrc = 3'b010;
+                    end
                     else:
                         PCsrc = 1'b0;
 
@@ -140,6 +136,7 @@ always_comb begin
                 jalmuxSel = 1'b1;
             end
         
+    endcase
     endcase
 end 
 
