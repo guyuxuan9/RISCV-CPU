@@ -92,8 +92,9 @@ always_comb begin
                         ALUsrc = 1'b1;
                     end
 
-                3'b001: // slli 
-            endcase
+                3'b001: // slli
+                
+
         7'b1100011: // branch instructions
             case(funct3)
                 3'b001: // bne
@@ -135,6 +136,7 @@ always_comb begin
                 jalmuxSel = 1'b1;
             end
         
+    endcase
     endcase
 end 
 
