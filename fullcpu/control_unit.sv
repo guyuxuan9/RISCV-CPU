@@ -82,25 +82,38 @@ always_comb begin
         if(funct3 == 3'b000) // jump and link register
 
     if(op == 7'b1101111) // jump and link */
+    
+    case (op)
+        7'b0010011: // addi
+            begin 
+                RegWrite = 1'b1;
+                ImmSrc = 3'b000;
+                ALUctrl = 3'b000;
+                ALUsrc = 1'b1;
+            end
+
+        7'b1100011: // bne
+            if(EQ == 1'b0)
+            begin
+                ImmSrc = 3'b010;
+                PCsrc = 1'b1;
+            end
+        7'b0100011: // sw
+            MemWrite = 1'b1;
+
+        7'b0000011: // lw
+            begin
+                ResultSrc = 1'b1;
+                RegWrite = 1'b1;
+            end
         
-    if(instr[6:0] == 7'b0010011) // addi
-        begin 
-        RegWrite = 1'b1;
-        ImmSrc = 3'b000;
-        ALUctrl = 3'b000;
-        ALUsrc = 1'b1;
-        end
-    if(instr[6:0] == 7'b1100011) // bne
-        if(EQ == 1'b0)
-        begin
-            ImmSrc = 3'b010;
-            PCsrc = 1'b1;
-        end
-    if(instr[6:0] == 7'b0100011) // sw 
-        MemWrite = 1'b1;
-    if(instr[6:0] == 7'b0000011) // lw 
-        ResultSrc = 1'b1;
-        RegWrite = 1'b1;
+        7'b1101111: // jal
+            begin
+                ImmSrc = 3'b100;
+                jalmuxSel = 1'b1;
+            end
+            
+    endcase
 end 
 
 endmodule
