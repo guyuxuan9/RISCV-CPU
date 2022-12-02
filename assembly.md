@@ -12,7 +12,6 @@ iloop:
 
 SL:
     SLLI s0, s0, 0x01       # shift left logical by 1
-    addi s0, s0, 0x01
-
-    BEQ zero, 0x00, a1
+    addi s0, s0, 0x01       # increment by 1
+    BEQ zero, zero, a1
 
