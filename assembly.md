@@ -5,9 +5,9 @@ main:
     addi t0, zero, 0x08     # initialize t0 to 0x08
     JAL a3, iloop
     
-iloop:
+iloop:                      # acts as a for loop (with n = 8)
     addi a0, a0, 1          # increment 1
-    JAL a1, SL              # JAL
+    JAL a1, SL             
     BEQ a0, t0, a3
 
 SL:
