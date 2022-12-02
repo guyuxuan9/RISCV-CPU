@@ -92,12 +92,12 @@ always_comb begin
                         ALUsrc = 1'b1;
                     end
 
-                3'b001: // slli
+                3'b001: // SLLI
                     begin
                         RegWrite = 1'b1;
                         ImmSrc = 3'b000;
                         ALUctrl = 3'b110;
-                        ALUsrc = 1'b1;
+                        ALUsrc = 1'b1;   
                     end
             endcase
 
