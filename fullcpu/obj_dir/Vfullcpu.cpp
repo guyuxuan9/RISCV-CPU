@@ -151,6 +151,9 @@ VL_ATTR_COLD static void trace_init(void* voidSelf, VerilatedVcd* tracep, uint32
 VL_ATTR_COLD void Vfullcpu___024root__trace_register(Vfullcpu___024root* vlSelf, VerilatedVcd* tracep);
 
 VL_ATTR_COLD void Vfullcpu::trace(VerilatedVcdC* tfp, int levels, int options) {
+    if (tfp->isOpen()) {
+        vl_fatal(__FILE__, __LINE__, __FILE__,"'Vfullcpu::trace()' shall not be called after 'VerilatedVcdC::open()'.");
+    }
     if (false && levels && options) {}  // Prevent unused
     tfp->spTrace()->addModel(this);
     tfp->spTrace()->addInitCb(&trace_init, &(vlSymsp->TOP));

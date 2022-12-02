@@ -16,13 +16,14 @@ class Vfullcpu___024root final : public VerilatedModule {
     VL_IN8(clk,0,0);
     VL_IN8(rst,0,0);
     CData/*0:0*/ fullcpu__DOT__PCsrc;
-    CData/*0:0*/ fullcpu__DOT__EQ;
+    CData/*0:0*/ fullcpu__DOT__Zero;
     CData/*0:0*/ fullcpu__DOT__RegWrite;
     CData/*2:0*/ fullcpu__DOT__ALUctrl;
     CData/*0:0*/ fullcpu__DOT__ALUsrc;
     CData/*2:0*/ fullcpu__DOT__ImmSrc;
     CData/*0:0*/ fullcpu__DOT__MemWrite;
     CData/*0:0*/ fullcpu__DOT__ResultSrc;
+    CData/*0:0*/ fullcpu__DOT__jalmuxSel;
     CData/*0:0*/ __Vclklast__TOP__clk;
     VL_OUT(a0,31,0);
     IData/*31:0*/ fullcpu__DOT__ImmOp;
@@ -33,7 +34,7 @@ class Vfullcpu___024root final : public VerilatedModule {
     IData/*31:0*/ fullcpu__DOT__topregalu__DOT__ALUop2;
     IData/*31:0*/ fullcpu__DOT__topregalu__DOT__regOp2;
     IData/*31:0*/ __Vchglast__TOP__fullcpu__DOT__ImmOp;
-    VlUnpacked<CData/*7:0*/, 28> fullcpu__DOT__blue__DOT__mem__DOT__rom_array;
+    VlUnpacked<CData/*7:0*/, 52> fullcpu__DOT__blue__DOT__mem__DOT__rom_array;
     VlUnpacked<IData/*31:0*/, 32> fullcpu__DOT__topregalu__DOT__RegFile__DOT__ram_array;
     VlUnpacked<IData/*31:0*/, 256> fullcpu__DOT__topregalu__DOT__datamemory__DOT__ram_array;
     VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
