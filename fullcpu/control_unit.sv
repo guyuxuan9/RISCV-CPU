@@ -95,19 +95,23 @@ always_comb begin
                     end
             endcase
                 3'b001: // slli
-                
+
 
         7'b1100011: // branch instructions
             case(funct3)
                 3'b001: // bne
-                if(EQ == 1'b0)
+                if(Zero == 1'b0)
                     begin
                         ImmSrc = 3'b010;
                         PCsrc = 1'b1;
                     end
 
                 3'b000: // beq
-
+                    if (Zero == 1'b1):
+                        PCsrc = 1'b1;
+                        ImmSrc = 3b'010;
+                    else:
+                        PCsrc = 1'b0;
 
             endcase
 
