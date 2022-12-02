@@ -23,7 +23,7 @@ module alu #(
             3'b100: ALUResult  = ALUSrcA < ALUSrcB;
             // Xor
             3'b101: ALUResult  = ALUSrcA ^ ALUSrcB;
-            // SLT
+            // SLL
             3'b110: ALUResult  = ALUSrcA << ALUSrcB;
             // SRL
             3'b111: ALUResult  = ALUSrcA >> ALUSrcB;

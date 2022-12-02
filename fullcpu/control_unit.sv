@@ -80,8 +80,6 @@ always_comb begin
 
     if(op == 7'b1100111) 
         if(funct3 == 3'b000) // jump and link register
-
-    if(op == 7'b1101111) // jump and link */
     
     case (op)
         7'b0010011: // register instructions
@@ -93,9 +91,15 @@ always_comb begin
                         ALUctrl = 3'b000;
                         ALUsrc = 1'b1;
                     end
-            endcase
+
                 3'b001: // slli
-                
+                    begin
+                        RegWrite = 1'b1;
+                        ImmSrc = 3'b000;
+                        ALUctrl = 3'b110;
+                        ALUsrc = 1'b1;
+                    end
+            endcase
 
         7'b1100011: // branch instructions
             case(funct3)
