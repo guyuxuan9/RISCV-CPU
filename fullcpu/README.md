@@ -1,10 +1,24 @@
-## addi,bne and lw instructions
-- > The following is the instructions
-![image](https://user-images.githubusercontent.com/58468284/203853225-48375453-4794-4c0d-b968-471bc7c98c56.png)
+## F1 light on RISCV
+- The pseudocode of the program is like this:
+    ```
+        s0 = a0 = a1 = a2 = 0
+        t0 = 8
 
-- The gtkwave displays the expected output:
-    - In the beginning, a0 increases by 1
-    ![image](https://user-images.githubusercontent.com/58468284/203853602-47a3567f-b09f-42e6-ae14-a7e6b151e184.png)
-    - When a0 == 0xFE, in the next cycle, __lw__ instruction will be executed. In this case __dataram[255] = 12345__, so a0 = 12345 immediately after __lw__ instruction is executed.
-    ![image](https://user-images.githubusercontent.com/58468284/203854000-fd8dd8cb-77d2-4644-90ca-9681391e08a1.png)
-    - Then, this program will be executed again from the beginning and this continues till max cycle is reached.
+        while (a2 != t0):
+            {a2 += 1
+             s0 << 1
+             s0 += 1
+             a0 = s0}
+    ```
+    - a0 is the output which goes through 0,1,11,111,...,11111111 and starts from 0 again
+    ![image](https://user-images.githubusercontent.com/58468284/205463858-0ff2d871-4de5-4b6d-b72a-2ad9309ff65a.png)
+
+    - s0 is used to store intermediate values of a0 (shift left and plus 1)
+    - a2 is used to indicate the state of F1 light. a2 should go from 0 to 8 with increment of 1 each time
+    ![image](https://user-images.githubusercontent.com/58468284/205463917-1c5f09f1-3762-4d99-8d8d-2aecf996a1a9.png)
+- **Return** to the next instruction of JAL is implemented by **JALR**. E.g. 
+``` 
+    JAL a3, iloop
+    ...
+    JALR a4, a3, 0 
+``` 
