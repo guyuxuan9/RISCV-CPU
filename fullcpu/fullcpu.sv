@@ -3,6 +3,7 @@ module fullcpu#(
 ) (
     input logic clk,
     input logic rst,
+    input logic trigger,
     output [DATA_WIDTH-1:0] a0
 );
 
@@ -25,6 +26,7 @@ top blue(
     .PCsrc(PCsrc),
     .clk(clk),
     .rst(rst),
+    .trigger(trigger),
     .ImmOp(ImmOp),
     .jalrmuxSel(jalrmuxSel),
     .rd1(rd1),

@@ -15,6 +15,7 @@ class Vfullcpu___024root final : public VerilatedModule {
     // DESIGN SPECIFIC STATE
     VL_IN8(clk,0,0);
     VL_IN8(rst,0,0);
+    VL_IN8(trigger,0,0);
     CData/*0:0*/ fullcpu__DOT__PCsrc;
     CData/*0:0*/ fullcpu__DOT__Zero;
     CData/*0:0*/ fullcpu__DOT__RegWrite;

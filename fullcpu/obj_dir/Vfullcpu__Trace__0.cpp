@@ -91,14 +91,15 @@ void Vfullcpu___024root__trace_chg_sub_0(Vfullcpu___024root* vlSelf, VerilatedVc
     }
     bufp->chgBit(oldp+58,(vlSelf->clk));
     bufp->chgBit(oldp+59,(vlSelf->rst));
-    bufp->chgIData(oldp+60,(vlSelf->a0),32);
-    bufp->chgIData(oldp+61,(vlSelf->fullcpu__DOT__topregalu__DOT__datamemory__DOT__ram_array
+    bufp->chgBit(oldp+60,(vlSelf->trigger));
+    bufp->chgIData(oldp+61,(vlSelf->a0),32);
+    bufp->chgIData(oldp+62,(vlSelf->fullcpu__DOT__topregalu__DOT__datamemory__DOT__ram_array
                             [(0xffU & vlSelf->fullcpu__DOT__topregalu__DOT__ALUout)]),32);
-    bufp->chgIData(oldp+62,(((IData)(vlSelf->fullcpu__DOT__ResultSrc)
+    bufp->chgIData(oldp+63,(((IData)(vlSelf->fullcpu__DOT__ResultSrc)
                               ? vlSelf->fullcpu__DOT__topregalu__DOT__datamemory__DOT__ram_array
                              [(0xffU & vlSelf->fullcpu__DOT__topregalu__DOT__ALUout)]
                               : vlSelf->fullcpu__DOT__topregalu__DOT__ALUout)),32);
-    bufp->chgIData(oldp+63,(((IData)(vlSelf->fullcpu__DOT__jalmuxSel)
+    bufp->chgIData(oldp+64,(((IData)(vlSelf->fullcpu__DOT__jalmuxSel)
                               ? ((IData)(4U) + vlSelf->fullcpu__DOT__blue__DOT__A)
                               : ((IData)(vlSelf->fullcpu__DOT__ResultSrc)
                                   ? vlSelf->fullcpu__DOT__topregalu__DOT__datamemory__DOT__ram_array

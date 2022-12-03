@@ -21,4 +21,6 @@
     JAL a3, iloop
     ...
     JALR a4, a3, 0 
-``` 
+```
+- Input **Trigger** is added. When trigger=1, the program starts. Otherwise, PC remains at 0.
+![image](https://user-images.githubusercontent.com/58468284/205464738-ddf0286c-b901-41e4-894c-d708df262cfe.png)

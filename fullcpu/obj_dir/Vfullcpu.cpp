@@ -13,6 +13,7 @@ Vfullcpu::Vfullcpu(VerilatedContext* _vcontextp__, const char* _vcname__)
     , vlSymsp{new Vfullcpu__Syms(contextp(), _vcname__, this)}
     , clk{vlSymsp->TOP.clk}
     , rst{vlSymsp->TOP.rst}
+    , trigger{vlSymsp->TOP.trigger}
     , a0{vlSymsp->TOP.a0}
     , rootp{&(vlSymsp->TOP)}
 {

@@ -313,6 +313,7 @@ VL_ATTR_COLD void Vfullcpu___024root___ctor_var_reset(Vfullcpu___024root* vlSelf
     // Body
     vlSelf->clk = VL_RAND_RESET_I(1);
     vlSelf->rst = VL_RAND_RESET_I(1);
+    vlSelf->trigger = VL_RAND_RESET_I(1);
     vlSelf->a0 = VL_RAND_RESET_I(32);
     vlSelf->fullcpu__DOT__PCsrc = VL_RAND_RESET_I(1);
     vlSelf->fullcpu__DOT__ImmOp = VL_RAND_RESET_I(32);

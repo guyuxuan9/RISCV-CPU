@@ -45,14 +45,18 @@ VL_INLINE_OPT void Vfullcpu___024root___sequent__TOP__0(Vfullcpu___024root* vlSe
     if (vlSelf->rst) {
         __Vdly__fullcpu__DOT__blue__DOT__A = 0U;
     }
-    __Vdly__fullcpu__DOT__blue__DOT__A = ((IData)(vlSelf->fullcpu__DOT__jalrmuxSel)
-                                           ? (vlSelf->fullcpu__DOT__topregalu__DOT__ALUop1 
-                                              + vlSelf->fullcpu__DOT__ImmOp)
-                                           : ((IData)(vlSelf->fullcpu__DOT__PCsrc)
-                                               ? (vlSelf->fullcpu__DOT__blue__DOT__A 
+    if (vlSelf->trigger) {
+        __Vdly__fullcpu__DOT__blue__DOT__A = ((IData)(vlSelf->fullcpu__DOT__jalrmuxSel)
+                                               ? (vlSelf->fullcpu__DOT__topregalu__DOT__ALUop1 
                                                   + vlSelf->fullcpu__DOT__ImmOp)
-                                               : ((IData)(4U) 
-                                                  + vlSelf->fullcpu__DOT__blue__DOT__A)));
+                                               : ((IData)(vlSelf->fullcpu__DOT__PCsrc)
+                                                   ? 
+                                                  (vlSelf->fullcpu__DOT__blue__DOT__A 
+                                                   + vlSelf->fullcpu__DOT__ImmOp)
+                                                   : 
+                                                  ((IData)(4U) 
+                                                   + vlSelf->fullcpu__DOT__blue__DOT__A)));
+    }
     if (__Vdlyvset__fullcpu__DOT__topregalu__DOT__datamemory__DOT__ram_array__v0) {
         vlSelf->fullcpu__DOT__topregalu__DOT__datamemory__DOT__ram_array[__Vdlyvdim0__fullcpu__DOT__topregalu__DOT__datamemory__DOT__ram_array__v0] 
             = __Vdlyvval__fullcpu__DOT__topregalu__DOT__datamemory__DOT__ram_array__v0;
@@ -356,7 +360,7 @@ VL_INLINE_OPT QData Vfullcpu___024root___change_request_1(Vfullcpu___024root* vl
     // Change detection
     QData __req = false;  // Logically a bool
     __req |= ((vlSelf->fullcpu__DOT__ImmOp ^ vlSelf->__Vchglast__TOP__fullcpu__DOT__ImmOp));
-    VL_DEBUG_IF( if(__req && ((vlSelf->fullcpu__DOT__ImmOp ^ vlSelf->__Vchglast__TOP__fullcpu__DOT__ImmOp))) VL_DBG_MSGF("        CHANGE: fullcpu.sv:10: fullcpu.ImmOp\n"); );
+    VL_DEBUG_IF( if(__req && ((vlSelf->fullcpu__DOT__ImmOp ^ vlSelf->__Vchglast__TOP__fullcpu__DOT__ImmOp))) VL_DBG_MSGF("        CHANGE: fullcpu.sv:11: fullcpu.ImmOp\n"); );
     // Final
     vlSelf->__Vchglast__TOP__fullcpu__DOT__ImmOp = vlSelf->fullcpu__DOT__ImmOp;
     return __req;
@@ -372,5 +376,7 @@ void Vfullcpu___024root___eval_debug_assertions(Vfullcpu___024root* vlSelf) {
         Verilated::overWidthError("clk");}
     if (VL_UNLIKELY((vlSelf->rst & 0xfeU))) {
         Verilated::overWidthError("rst");}
+    if (VL_UNLIKELY((vlSelf->trigger & 0xfeU))) {
+        Verilated::overWidthError("trigger");}
 }
 #endif  // VL_DEBUG
