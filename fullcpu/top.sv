@@ -6,8 +6,8 @@ module top#(
     input logic                            clk,
     input logic                            rst,
     input logic [DATAOUT_WIDTH-1:0]        ImmOp, // output from "sign extend" block
-  //  output logic [ADDRESS_WIDTH-1:0]       PC,
-  //  input logic [ADDRESS_WIDTH-1:0]        A,
+    input logic                            jalrmuxSel, // =1 if the instruction is jalr, =0 otherwise
+    input logic [ADDRESS_WIDTH-1:0]        rd1, // output rd1 from regfile
     output logic [DATAOUT_WIDTH-1:0]       RD,
     output logic [ADDRESS_WIDTH-1:0]       PC_out
 );
@@ -19,6 +19,8 @@ blue_part pc(
     .clk(clk),
     .rst(rst),
     .ImmOp(ImmOp),
+    .jalrmuxSel(jalrmuxSel),
+    .rd1(rd1),
     .PC(A)
 );
 
