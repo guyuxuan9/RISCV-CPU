@@ -2,11 +2,11 @@ module alu #(
     parameter DATA_WIDTH = 32
 )(
     // interface signals
-    input logic        [DATA_WIDTH-1:0]         ALUSrcA,       // rd1
-    input logic        [DATA_WIDTH-1:0]         ALUSrcB,       // rd2
+    input logic        [DATA_WIDTH-1:0]         ALUSrcA,       
+    input logic        [DATA_WIDTH-1:0]         ALUSrcB,       
     input logic        [2:0]                    ALUControl,      
     output logic                                Zero,
-    output logic       [DATA_WIDTH-1:0]         ALUResult           // ALUResult
+    output logic       [DATA_WIDTH-1:0]         ALUResult           
 );
 
     always_comb begin
@@ -29,6 +29,7 @@ module alu #(
             3'b111: ALUResult  = ALUSrcA >> ALUSrcB;
 
         endcase
+        
         // Zero
         if(ALUSrcA == ALUSrcB)
             Zero = 1;
