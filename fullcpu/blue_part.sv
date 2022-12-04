@@ -1,7 +1,7 @@
 module blue_part #(
     parameter ADDRESS_WIDTH = 32
 )(
-    input logic                             PCsrc, // output from control unit
+    input logic                             PCSrc, // output from control unit
     input logic                             clk,
     input logic                             rst,
     input logic                             trigger,
@@ -11,7 +11,7 @@ module blue_part #(
     output logic [ADDRESS_WIDTH-1:0]        PC
 );
 
-//logic       normal_pc;
+// logic  normal_pc;
 
 always_ff@(posedge clk) begin
     if (rst)        PC <= {ADDRESS_WIDTH{1'b0}}; // reset
