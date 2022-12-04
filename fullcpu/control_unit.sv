@@ -1,17 +1,17 @@
 module control_unit #(
     parameter ADDRESS_WIDTH = 32
 )(
-    input logic      [6:0]          op,  //Instr[6:0]
-    input logic      [3:0]      funct3,
-    input logic                 funct7,
+    input logic      [6:0]          op,  // Instr[6:0]
+    input logic      [3:0]      funct3,  // Instr[14:12]
+    input logic                 funct7,  // Instr[30]
     input logic                   Zero,
     output logic              RegWrite,
-    output logic     [2:0]     ALUctrl,
-    output logic                ALUsrc,
     output logic     [2:0]      ImmSrc,
-    output logic                 PCsrc,
+    output logic                ALUSrc,
+    output logic     [2:0]  ALUControl,
     output logic              MemWrite,
     output logic             ResultSrc,
+    output logic                 PCSrc,
     output logic             jalmuxSel,
     output logic            jalrmuxSel
 );
@@ -21,11 +21,11 @@ always_comb begin
     // Initialising Outputs
     RegWrite = 1'b0;
     ImmSrc = 3'b000;
-    ALUctrl = 3'b000;
-    ALUsrc = 1'b0;
-    PCsrc = 1'b0; 
+    ALUSrc = 1'b0;
+    ALUControl = 3'b000;
     MemWrite = 1'b0;
     ResultSrc = 1'b0;
+    PCSrc = 1'b0; 
     jalmuxSel = 1'b0;
     jalrmuxSel = 1'b0;
 
@@ -82,6 +82,7 @@ always_comb begin
 
     if(op == 7'b1100111) 
         if(funct3 == 3'b000) // jump and link register*/
+
     case (op)
         7'b0010011: // register instructions
             case(funct3)
@@ -89,16 +90,16 @@ always_comb begin
                     begin 
                         RegWrite = 1'b1;
                         ImmSrc = 3'b000;
-                        ALUctrl = 3'b000;
-                        ALUsrc = 1'b1;
+                        ALUControl = 3'b000;
+                        ALUSrc = 1'b1;
                     end
 
                 3'b001: // slli
                     begin
                         RegWrite = 1'b1;
                         ImmSrc = 3'b000;
-                        ALUctrl = 3'b110;
-                        ALUsrc = 1'b1;   
+                        ALUControl = 3'b110;
+                        ALUSrc = 1'b1;   
                     end
             endcase
 
@@ -109,7 +110,7 @@ always_comb begin
                     1'b0:
                     begin
                         ImmSrc = 3'b010;
-                        PCsrc = 1'b1;
+                        PCSrc = 1'b1;
                     end
                 endcase
 
@@ -117,7 +118,7 @@ always_comb begin
                     case(Zero)
                         1'b1:
                         begin
-                            PCsrc = 1'b1;
+                            PCSrc = 1'b1;
                             ImmSrc = 3'b010;
                         end
                     endcase
@@ -144,14 +145,14 @@ always_comb begin
                 ImmSrc = 3'b100;
                 jalmuxSel = 1'b1;
                 RegWrite = 1'b1;
-                PCsrc = 1'b1;
+                PCSrc = 1'b1;
             end
         7'b1100111: //jalr
             begin
                 ImmSrc = 3'b110;
                 jalmuxSel = 1'b1;
                 RegWrite = 1'b1;
-                PCsrc = 1'b1;
+                PCSrc = 1'b1;
                 jalrmuxSel = 1'b1;
             end
     endcase

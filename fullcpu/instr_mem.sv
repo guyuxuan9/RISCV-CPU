@@ -1,9 +1,9 @@
 module instr_mem #(
-    parameter   ADDRESS_WIDTH = 32, //testing
+    parameter   ADDRESS_WIDTH = 32, // testing
                 DATAOUT_WIDTH = 32,
                 DATA_WIDTH = 8
 )(
-    input logic [ADDRESS_WIDTH-1:0] A,
+    input logic  [ADDRESS_WIDTH-1:0]  A,
     output logic [DATAOUT_WIDTH-1:0] RD
 );
 

@@ -2,7 +2,7 @@ module sign_extend #(
     parameter ADDRESS_WIDTH = 32
 )(
     input logic     [ADDRESS_WIDTH-1:0]   instr,
-    input logic                   [2:0]  ImmSrc,
+    input logic                   [2:0]   ImmSrc,
     output logic    [ADDRESS_WIDTH-1:0]   ImmExt
 );
 
@@ -22,6 +22,7 @@ always_comb begin
         3'b101: ImmExt[31:0] = {instr[31:12], {12{instr[12]}}};
         // JALR 
         3'b110: ImmExt[31:0] = {{20{instr[31]}},instr[31:20]};
+        // isnt JALR already I-type?
 
     endcase
     
