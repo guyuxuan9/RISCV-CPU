@@ -1,9 +1,10 @@
 module fullcpu#(
     parameter  DATA_WIDTH = 32
 ) (
-    input logic                     clk,
-    input logic                     rst,
-    output logic [DATA_WIDTH-1:0]    a0
+    input logic clk,
+    input logic rst,
+    input logic trigger,
+    output [DATA_WIDTH-1:0] a0
 );
 
 logic PCsrc;
@@ -16,14 +17,19 @@ logic ALUsrc;
 logic [2:0] ImmSrc;
 logic MemWrite;
 logic ResultSrc;
-logic PC;
+logic [31:0] PC;
 logic jalmuxSel;
+logic jalrmuxSel; // =1 if the instruction is jalr, =0 otherwise
+logic [31:0] rd1;
 
 top blue(
     .PCsrc(PCsrc),
     .clk(clk),
     .rst(rst),
+    .trigger(trigger),
     .ImmOp(ImmOp),
+    .jalrmuxSel(jalrmuxSel),
+    .rd1(rd1),
     .RD(Instr), // output
     .PC_out(PC) // output 
 );
@@ -40,7 +46,8 @@ control_unit controlunit(
     .PCsrc(PCsrc),
     .MemWrite(MemWrite),
     .ResultSrc(ResultSrc),
-    .jalmuxSel(jalmuxSel)
+    .jalmuxSel(jalmuxSel),
+    .jalrmuxSel(jalrmuxSel)
 );
 
 sign_extend signextend (
@@ -63,7 +70,8 @@ topregalu topregalu (
     .ImmOp(ImmOp),
     .eq(Zero),
     .a0(a0),
-    .jalmuxSel(jalmuxSel)
+    .jalmuxSel(jalmuxSel),
+    .rd1(rd1)
 );
 
 endmodule 

@@ -16,7 +16,8 @@ module topregalu #(
     input logic        [32:0]                        PC,
     input logic                                      jalmuxSel, // select for the jalmux
     output logic                                     eq,
-    output logic       [DATA_WIDTH-1:0]              a0
+    output logic       [DATA_WIDTH-1:0]              a0,
+    output logic       [DATA_WIDTH-1:0]              rd1
 );
 
 logic [DATA_WIDTH-1:0] ALUout;
@@ -75,5 +76,5 @@ mux jalmux(
     .s(jalmuxSel),
     .out(jalmuxOut)
 );
-
+assign rd1 = ALUop1;
 endmodule
