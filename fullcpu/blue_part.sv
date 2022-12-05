@@ -20,7 +20,7 @@ always_ff@(posedge clk) begin
         if (jalrmuxSel) // jalr instruction
             PC <= rd1 + ImmOp;
         else
-            if (PCsrc)      PC <= PC + ImmOp;
+            if (PCSrc)      PC <= PC + ImmOp;
             else            PC <= PC + 4;
 end
 

@@ -51,7 +51,7 @@ alu ALU(
 mux MUX(
     .d0(regOp2),
     .d1(ImmOp),
-    .s(ALUsrc),
+    .s(ALUSrc),
     .out(ALUop2)
 );
 
