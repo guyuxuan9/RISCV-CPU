@@ -1,14 +1,14 @@
 ## F1 light on RISCV
-- The pseudocode of the program is like this:
+- The Python program is like this:
     ```
         s0 = a0 = a1 = a2 = 0
         t0 = 8
 
         while (a2 != t0):
-            {a2 += 1
-             s0 << 1
-             s0 += 1
-             a0 = s0}
+            a2 += 1
+            s0 << 1
+            s0 += 1
+            a0 = s0
     ```
 - Assembly code is this:
     ```
