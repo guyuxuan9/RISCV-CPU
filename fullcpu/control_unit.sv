@@ -87,20 +87,20 @@ always_comb begin
         7'b0010011: // register instructions
             case(funct3)
                 3'b000: // addi
-                    begin 
-                        RegWrite = 1'b1;
-                        ImmSrc = 3'b000;
-                        ALUControl = 3'b000;
-                        ALUSrc = 1'b1;
-                    end
+                begin 
+                    RegWrite = 1'b1;
+                    ImmSrc = 3'b000;
+                    ALUControl = 3'b000;
+                    ALUSrc = 1'b1;
+                end
 
                 3'b001: // slli
-                    begin
-                        RegWrite = 1'b1;
-                        ImmSrc = 3'b000;
-                        ALUControl = 3'b110;
-                        ALUSrc = 1'b1;   
-                    end
+                begin
+                    RegWrite = 1'b1;
+                    ImmSrc = 3'b000;
+                    ALUControl = 3'b110;
+                    ALUSrc = 1'b1;   
+                end
             endcase
 
         7'b1100011: // branch instructions
@@ -129,41 +129,44 @@ always_comb begin
         7'b0100011: // store instructions
             case(funct3)
                 3'b010: // sw
-                    begin
-                        ResultSrc = 1'b1;
-                        MemWrite = 1'b1;
-                        ImmSrc = 3'b001;
-                        ALUControl = 3'b000;
-                    end
+                begin
+                    ResultSrc = 1'b1;
+                    MemWrite = 1'b1;
+                    ImmSrc = 3'b001;
+                    ALUControl = 3'b000;
+                end
             endcase
 
         7'b0000011: // load instructions
             case(funct3)
                 3'b010: // lw
-                    begin
-                        ResultSrc = 1'b1;
-                        RegWrite = 1'b1;
-                        ImmSrc = 3'b000;
-                        ALUControl = 3'b000;
-                    end
+                begin
+                    ResultSrc = 1'b1;
+                    RegWrite = 1'b1;
+                    ImmSrc = 3'b000;
+                    ALUControl = 3'b000;
+                end
             endcase
         
-        7'b1101111: // jal
+        7'b1101111:  // jal
             begin
                 ImmSrc = 3'b100;
                 jalmuxSel = 1'b1;
                 RegWrite = 1'b1;
                 PCSrc = 1'b1;
             end
-            
-        7'b1100111: // jalr
-            begin
-                ImmSrc = 3'b110;
-                jalmuxSel = 1'b1;
-                RegWrite = 1'b1;
-                PCSrc = 1'b1;
-                jalrmuxSel = 1'b1;
-            end
+
+        7'b1100111: 
+            case(funct3)
+                3'b000: // jalr
+                begin
+                    ImmSrc = 3'b000;
+                    jalmuxSel = 1'b1;
+                    RegWrite = 1'b1;
+                    PCSrc = 1'b1;
+                    jalrmuxSel = 1'b1;
+                end
+            endcase
     endcase
 end
 endmodule
