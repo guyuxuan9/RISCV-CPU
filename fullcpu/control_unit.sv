@@ -1,19 +1,19 @@
 module control_unit #(
     parameter ADDRESS_WIDTH = 32
 )(
-    input logic      [6:0]          op,  // Instr[6:0]
+    input logic      [6:0]      op,      // Instr[6:0]
     input logic      [3:0]      funct3,  // Instr[14:12]
     input logic                 funct7,  // Instr[30]
-    input logic                   Zero,
-    output logic              RegWrite,
+    input logic                 Zero,
+    output logic                RegWrite,
     output logic     [2:0]      ImmSrc,
     output logic                ALUSrc,
-    output logic     [2:0]  ALUControl,
-    output logic              MemWrite,
-    output logic             ResultSrc,
-    output logic                 PCSrc,
-    output logic             jalmuxSel,
-    output logic            jalrmuxSel
+    output logic     [2:0]      ALUControl,
+    output logic                MemWrite,
+    output logic                ResultSrc,
+    output logic                PCSrc,
+    output logic                jalmuxSel,
+    output logic                jalrmuxSel
 );
 
 always_comb begin

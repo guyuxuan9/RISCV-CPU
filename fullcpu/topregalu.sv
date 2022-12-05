@@ -11,7 +11,7 @@ module topregalu #(
     input logic                                      ALUSrc,
     input logic                                      ResultSrc,
     input logic                                      MemWrite,   
-    input logic        [2:0]                         ALUCtrl,
+    input logic        [2:0]                         ALUControl,
     input logic        [DATA_WIDTH-1:0]              ImmOp,
     input logic        [32:0]                        PC,
     input logic                                      jalmuxSel, // select for the jalmux
@@ -76,5 +76,6 @@ mux jalmux(
     .s(jalmuxSel),
     .out(jalmuxOut)
 );
+
 assign rd1 = ALUop1;
 endmodule

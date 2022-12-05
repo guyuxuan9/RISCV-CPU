@@ -2,7 +2,7 @@ module top#(
     parameter ADDRESS_WIDTH = 32,
     DATAOUT_WIDTH = 32
 )(
-    input logic                            PCsrc, // output from control unit
+    input logic                            PCSrc, // output from control unit
     input logic                            clk,
     input logic                            rst,
     input logic                            trigger,
@@ -16,7 +16,7 @@ module top#(
 logic [ADDRESS_WIDTH-1:0]        A;
 
 blue_part pc(
-    .PCsrc(PCsrc),
+    .PCSrc(PCSrc),
     .clk(clk),
     .rst(rst),
     .trigger(trigger),
