@@ -24,7 +24,7 @@ module regfile #(
     always_comb begin
         RD1 = (A1 == 0) ? 0 : ram_array[A1];
         RD2 = (A2 == 0) ? 0 : ram_array[A2];
-        a0 = ram_array[10];
+        a0 = ram_array[10];                      // Used for testing purposes
     end
 
 endmodule

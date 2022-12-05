@@ -9,9 +9,9 @@ module datamem#(
     output logic [DATA_WIDTH-1:0]       RD 
 );
 
-logic [DATA_WIDTH-1:0] ram_array [255:0];
+logic [DATA_WIDTH-1:0] ram_array [255:0]; // [2**8 - 1:0]
 
-assign ram_array[255] = 32'h12345; // a0 should be 12345 after FE
+assign ram_array[255] = 32'h12345; // a0 should be h(00012345) after FE
 
 // synchronous
 always_ff @(posedge clk) begin 
