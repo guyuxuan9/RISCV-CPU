@@ -105,30 +105,36 @@ always_comb begin
 
         7'b1100011: // branch instructions
             case(funct3)
-                3'b001: // bne
-                case(Zero)
-                    1'b0:
-                    begin
-                        ImmSrc = 3'b010;
-                        PCSrc = 1'b1;
-                    end
-                endcase
-
                 3'b000: // beq
                     case(Zero)
                         1'b1:
                         begin
                             PCSrc = 1'b1;
                             ImmSrc = 3'b010;
+                            ALUControl = 3'b001;
                         end
                     endcase
-
+                    
+                3'b001: // bne
+                    case(Zero)
+                        1'b0:
+                        begin
+                            PCSrc = 1'b1;
+                            ImmSrc = 3'b010;
+                            ALUControl = 3'b001;
+                        end
+                    endcase
             endcase
 
         7'b0100011: // store instructions
             case(funct3)
                 3'b010: // sw
-                    MemWrite = 1'b1;
+                    begin
+                        ResultSrc = 1'b1;
+                        MemWrite = 1'b1;
+                        ImmSrc = 3'b001;
+                        ALUControl = 3'b000;
+                    end
             endcase
 
         7'b0000011: // load instructions
@@ -137,6 +143,8 @@ always_comb begin
                     begin
                         ResultSrc = 1'b1;
                         RegWrite = 1'b1;
+                        ImmSrc = 3'b000;
+                        ALUControl = 3'b000;
                     end
             endcase
         
@@ -147,7 +155,8 @@ always_comb begin
                 RegWrite = 1'b1;
                 PCSrc = 1'b1;
             end
-        7'b1100111: //jalr
+            
+        7'b1100111: // jalr
             begin
                 ImmSrc = 3'b110;
                 jalmuxSel = 1'b1;

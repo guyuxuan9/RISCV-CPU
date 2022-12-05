@@ -8,7 +8,7 @@ module topregalu #(
     input logic        [ADDRESS_WIDTH-1:0]           rs2,      
     input logic        [ADDRESS_WIDTH-1:0]           rd,
     input logic                                      RegWrite,
-    input logic                                      ALUsrc,
+    input logic                                      ALUSrc,
     input logic                                      ResultSrc,
     input logic                                      MemWrite,   
     input logic        [2:0]                         ALUCtrl,
@@ -43,7 +43,7 @@ regfile RegFile (
 alu ALU(
     .ALUSrcA(ALUop1),
     .ALUSrcB(ALUop2),
-    .ALUControl(ALUCtrl),
+    .ALUControl(ALUControl),
     .Zero(eq),
     .ALUResult(ALUout)
 );

@@ -1,8 +1,8 @@
 module sign_extend #(
     parameter ADDRESS_WIDTH = 32
 )(
-    input logic     [ADDRESS_WIDTH-1:0]   instr,
-    input logic                   [2:0]   ImmSrc,
+    input logic     [ADDRESS_WIDTH-1:7]   instr,   // instruction[31:7]
+    input logic                   [2:0]   ImmSrc,  // 2 or 3 bits?
     output logic    [ADDRESS_WIDTH-1:0]   ImmExt
 );
 
@@ -17,9 +17,10 @@ always_comb begin
         // R-type
         3'b011: ImmExt[31:0] = instr;
         // J-type
-        3'b100: ImmExt[31:0] = {{11{instr[31]}}, instr[31], instr[19:12], instr[20], instr[30:21], 1'b0};
+        3'b100: ImmExt[31:0] = {{12{instr[31]}}, instr[19:12], instr[20], instr[30:21], 1'b0};
         // U-type
         3'b101: ImmExt[31:0] = {instr[31:12], {12{instr[12]}}};
+
         // JALR 
         3'b110: ImmExt[31:0] = {{20{instr[31]}},instr[31:20]};
         // isnt JALR already I-type?
