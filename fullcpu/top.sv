@@ -1,6 +1,6 @@
 module top#(
     parameter ADDRESS_WIDTH = 32,
-    DATAOUT_WIDTH = 32
+              DATAOUT_WIDTH = 32
 )(
     input logic                            PCSrc, // output from control unit
     input logic                            clk,

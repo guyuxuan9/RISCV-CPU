@@ -35,15 +35,13 @@ int main(int argc, char **argv, char **env) {
       top->clk = !top->clk;
       top->eval ();
     }
+
     if (simcyc < 10)   top->trigger = 0;
     else               top->trigger = 1;
-    if (simcyc == 20) {
-      top->rst = 1;
-    }
-    else
-    {
-      top->rst = 0;
-    }
+
+    if (simcyc == 20)  top->rst = 1;
+    else               top->rst = 0;
+  
 
     if (Verilated::gotFinish())  exit(0);
   }
@@ -51,5 +49,3 @@ int main(int argc, char **argv, char **env) {
   tfp->close(); 
   exit(0);
 }
-
-// N=36 -> 1s
