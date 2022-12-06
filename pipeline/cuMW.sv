@@ -1,4 +1,4 @@
-module cuMV(
+module cuMW(
     input logic                 clk,
     input logic                 RegWriteM,
     input logic     [1:0]       ResultSrcM,

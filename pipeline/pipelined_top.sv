@@ -59,9 +59,17 @@ logic [DATA_WIDTH-1:0]          WriteDataM;
 logic [DATA_WIDTH-1:0]          PCPlus4M;
 logic [4:0]                     RdM;
 logic                           RegWriteM;
-logic    [1:0]                  ResultSrcM;
+logic [1:0]                     ResultSrcM;
 logic                           MemWriteM;
 
+logic [DATA_WIDTH-1:0]          MemOut;
+logic [DATA_WIDTH-1:0]          ALUResultW;
+logic [DATA_WIDTH-1:0]          ReadDataW;
+logic [DATA_WIDTH-1:0]          PCPlus4W;
+logic [4:0]                     RdW;
+
+logic                           RegWriteW;
+logic [1:0]                     ResultSrcW;
 Fetch fetch(
     .PCSrc(PCSrcE),
     .clk(clk),
@@ -181,6 +189,34 @@ cuEM CUEM(
     .RegWriteM(RegWriteM),
     .ResultSrcM(ResultSrcM),
     .MemWriteM(MemWriteM)
+);
+
+datamem DataMem(
+    .clk(clk),
+    .WE(MemWriteM),
+    .A(ALUResultM),
+    .WD(WriteDataM),
+    .RD(MemOut)
+);
+
+topMW MW_reg(
+    .clk(clk),
+    .ALUResultM(ALUResultM),
+    .ReadDataM(MemOut),
+    .PCPlus4M(PCPlus4M),
+    .RdM(RdM),
+    .ALUResultW(ALUResultW),
+    .ReadDataW(ReadDataW),
+    .PCPlus4W(PCPlus4W),
+    .RdW(RdW)
+);
+
+cuMW CUMW(
+    .clk(clk),
+    .RegWriteM(RegWriteM),
+    .ResultSrcM(ResultSrcM),
+    .RegWriteW(RegWriteW),
+    .ResultSrcW(ResultSrcW)
 );
 
 endmodule
