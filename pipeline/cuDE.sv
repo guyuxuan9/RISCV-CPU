@@ -7,6 +7,7 @@ module cuDE(
     input logic                 BranchD,
     input logic     [2:0]       ALUControlD,
     input logic                 ALUSrcD,
+    input logic                 JalrmuxSelD,
 
     output logic                RegWriteE,
     output logic    [1:0]       ResultSrcE,
@@ -15,6 +16,7 @@ module cuDE(
     output logic                BranchE,
     output logic    [2:0]       ALUControlE,
     output logic                ALUSrcE,
+    output logic                JalrmuxSelE
 );
 
 // do we create register for each signal since each have different width size? 
@@ -60,6 +62,12 @@ reg #(1) ALUSrc_regDE(
     .clk(clk),
     .in(ALUSrcD),
     .out(ALUSrcE)
+);
+
+reg #(1) JalrMuxSel_regDE(
+    .clk(clk),
+    .in(JalrmuxSelD),
+    .out(JalrmuxSelE)
 );
 
 endmodule

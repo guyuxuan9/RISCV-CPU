@@ -4,15 +4,14 @@ module control_unit #(
     input logic      [6:0]      op,      // Instr[6:0]
     input logic      [3:0]      funct3,  // Instr[14:12]
     input logic                 funct7,  // Instr[30]
-    input logic                 Zero,
     output logic                RegWrite,
-    output logic     [2:0]      ImmSrc,
-    output logic                ALUSrc,
-    output logic     [2:0]      ALUControl,
+    output logic                ResultSrc,  // to be completed!!!!
     output logic                MemWrite,
-    output logic                ResultSrc,
-    output logic                PCSrc,
-    output logic                jalmuxSel,
+    output logic                Jump, // to be completed!!!
+    output logic                Branch, // to be completed!!!
+    output logic     [2:0]      ALUControl,
+    output logic                ALUSrc,
+    output logic     [2:0]      ImmSrc,
     output logic                jalrmuxSel
 );
 
@@ -52,24 +51,19 @@ always_comb begin
         7'b1100011: // branch instructions
             case(funct3)
                 3'b000: // beq
-                    case(Zero)
-                        1'b1:
-                        begin
-                            PCSrc = 1'b1;
-                            ImmSrc = 3'b010;
-                            ALUControl = 3'b001;
-                        end
-                    endcase
+                    begin
+                        PCSrc = 1'b1;
+                        ImmSrc = 3'b010;
+                        ALUControl = 3'b001;
+                    end
                     
                 3'b001: // bne
-                    case(Zero)
-                        1'b0:
-                        begin
-                            PCSrc = 1'b1;
-                            ImmSrc = 3'b010;
-                            ALUControl = 3'b001;
-                        end
-                    endcase
+                    begin
+                        PCSrc = 1'b1;
+                        ImmSrc = 3'b010;
+                        ALUControl = 3'b001;
+                    end
+
             endcase
 
         7'b0100011: // store instructions
