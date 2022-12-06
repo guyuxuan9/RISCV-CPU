@@ -28,7 +28,7 @@ reg readdata_regMW(
     .out(ReadDataW)
 );
 
-reg rd3_regMW(
+reg #(5) rd3_regMW(  // destination register, initialise DATA_WIDTH to 5
     .clk(clk),
     .in(RdM),
     .out(RdW)

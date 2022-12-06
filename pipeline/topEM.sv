@@ -29,7 +29,7 @@ reg writedata_regEM(
     .out(WriteDataM)
 );
 
-reg rd3_regEM(
+reg #(5) rd3_regEM(  // destination register, initialise DATA_WIDTH to 5
     .clk(clk),
     .in(RdE),
     .out(RdM)

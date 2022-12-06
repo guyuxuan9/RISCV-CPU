@@ -39,7 +39,7 @@ reg rd2_regDE(
     .out(RD2E)
 );
 
-reg rd3_regDE(      // destination register
+reg #(5) rd3_regDE(      // destination register, initialise DATA_WIDTH to 5
     .clk(clk),
     .in(RdD),
     .out(RdE)
