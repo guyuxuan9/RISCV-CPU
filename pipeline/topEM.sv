@@ -7,10 +7,6 @@ module topEM#(
     input logic [DATA_WIDTH-1:0]     PCPlus4E,
     input logic [4:0]                RdE,
 
-    // RdE and RdM
-    // input logic [5:0]             RdE,
-    // output logic [5:0]            RdM,
-
     output logic [DATA_WIDTH-1:0]    ALUResultM,
     output logic [DATA_WIDTH-1:0]    WriteDataM,
     output logic [DATA_WIDTH-1:0]    PCPlus4M,
