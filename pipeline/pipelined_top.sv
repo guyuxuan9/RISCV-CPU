@@ -41,16 +41,26 @@ logic [DATA_WIDTH-1:0]          RD2E;
 logic [DATA_WIDTH-1:0]          PCE;
 logic [DATA_WIDTH-1:0]          ImmExtE;
 logic [DATA_WIDTH-1:0]          PCPlus4E;
-logic [4:0]                     RdE
+logic [4:0]                     RdE;
 
-logic                           RegWriteE,
-logic [1:0]                     ResultSrcE,
-logic                           MemWriteE,
-logic                           JumpE,
-logic                           BranchE,
-logic [2:0]                     ALUControlE,
-logic                           ALUSrcE,
-logic                           JalrmuxSelE
+logic                           RegWriteE;
+logic [1:0]                     ResultSrcE;
+logic                           MemWriteE;
+logic                           JumpE;
+logic                           BranchE;
+logic [2:0]                     ALUControlE;
+logic                           ALUSrcE;
+logic                           JalrmuxSelE;
+
+logic                           ZeroE;
+logic [31:0]                    PCTargetE;
+logic [DATA_WIDTH-1:0]          ALUResultM;
+logic [DATA_WIDTH-1:0]          WriteDataM;
+logic [DATA_WIDTH-1:0]          PCPlus4M;
+logic [4:0]                     RdM;
+logic                           RegWriteM;
+logic    [1:0]                  ResultSrcM;
+logic                           MemWriteM;
 
 Fetch fetch(
     .PCSrc(PCSrcE),
@@ -112,7 +122,7 @@ topDE DE_reg(
     .RdE(RdE)
 );
 
-top cuDE(
+cuDE CUDE(
     .clk(clk),
     .RegWriteD(RegWriteD),
     .ResultSrcD(ResultSrcD),
@@ -130,6 +140,47 @@ top cuDE(
     .ALUControlE(ALUControlE),
     .ALUSrcE(ALUSrcE),
     .JalrmuxSelE(JalrmuxSelE)
+);
+
+PCSrcLogic PCSrcE_logic(
+    .Branch(BranchE),
+    .Zero(ZeroE),
+    .Jump(JumpE),
+    .PCSrc(PCSrcE)
+);
+
+Execute execute(
+    .ALUControlE(ALUControlE),
+    .ALUSrcE(ALUSrcE),
+    .RD1E(RD1E),
+    .RD2E(RD2E),
+    .PCE(PCE),
+    .ImmExtE(ImmExtE),
+    .ALUResult(ALUResultE),
+    .ZeroE(ZeroE),
+    .PCTargetE(PCTargetE)
+);
+
+topEM EM_reg(
+    .clk(clk),
+    .ALUResultE(ALUResultE),
+    .WriteDataE(RD2E),
+    .PCPlus4E(PCPlus4E),
+    .RdE(RdE),
+    .ALUResultM(ALUResultM),
+    .WriteDataM(WriteDataM),
+    .PCPlus4M(PCPlus4M),
+    .RdM(RdM)
+);
+
+cuEM CUEM(
+    .clk(clk),
+    .RegWriteE(RegWriteE),
+    .ResultSrcE(ResultSrcE),
+    .MemWriteE(MemWriteE),
+    .RegWriteM(RegWriteM),
+    .ResultSrcM(ResultSrcM),
+    .MemWriteM(MemWriteM)
 );
 
 endmodule
