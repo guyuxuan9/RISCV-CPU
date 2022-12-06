@@ -8,5 +8,18 @@ module cuMV(
 );
 
 // do we create register for each signal since each have different width size?
+// A: No, parameter DATA_WIDTH can be instantiated when you instantiate reg.sv
+
+reg #(1) RegWrite_regMW(
+    .clk(clk),
+    .in(RegWriteM),
+    .out(RegWriteW)
+);
+
+reg #(2) ResultSrc_regMW(
+    .clk(clk),
+    .in(ResultSrcM),
+    .out(ResultSrcW)
+);
 
 endmodule
