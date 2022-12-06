@@ -5,7 +5,7 @@ module control_unit #(
     input logic      [3:0]      funct3,  // Instr[14:12]
     input logic                 funct7,  // Instr[30]
     output logic                RegWrite,
-    output logic                ResultSrc,  // to be completed!!!!
+    output logic     [1:0]      ResultSrc,  // to be completed!!!!
     output logic                MemWrite,
     output logic                Jump, // to be completed!!!
     output logic                Branch, // to be completed!!!
@@ -27,9 +27,13 @@ always_comb begin
     PCSrc = 1'b0; 
     jalmuxSel = 1'b0;
     jalrmuxSel = 1'b0;
+    Jump = 1'b0;
+    Branch = 1'b0;
+    ResultSrc = 2'b00; 
 
     case (op)
         7'b0010011: // register instructions
+            ResultSrc = 2'b00; // does not involve the data memory
             case(funct3)
                 3'b000: // addi
                 begin 
@@ -49,6 +53,8 @@ always_comb begin
             endcase
 
         7'b1100011: // branch instructions
+            Branch = 1'b1;
+            
             case(funct3)
                 3'b000: // beq
                     begin
@@ -67,6 +73,7 @@ always_comb begin
             endcase
 
         7'b0100011: // store instructions
+            ResultSrc = 2'b01;
             case(funct3)
                 3'b010: // sw
                 begin
@@ -78,6 +85,7 @@ always_comb begin
             endcase
 
         7'b0000011: // load instructions
+            ResultSrc = 2'b01;
             case(funct3)
                 3'b010: // lw
                 begin
@@ -94,6 +102,7 @@ always_comb begin
                 jalmuxSel = 1'b1;
                 RegWrite = 1'b1;
                 PCSrc = 1'b1;
+                Jump = 1'b1;
             end
 
         7'b1100111: 
@@ -105,6 +114,7 @@ always_comb begin
                     RegWrite = 1'b1;
                     PCSrc = 1'b1;
                     jalrmuxSel = 1'b1;
+                    Jump = 1'b1;
                 end
             endcase
     endcase
