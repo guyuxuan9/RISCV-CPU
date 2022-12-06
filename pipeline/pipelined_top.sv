@@ -66,10 +66,8 @@ logic [DATA_WIDTH-1:0]          MemOut;
 logic [DATA_WIDTH-1:0]          ALUResultW;
 logic [DATA_WIDTH-1:0]          ReadDataW;
 logic [DATA_WIDTH-1:0]          PCPlus4W;
-logic [4:0]                     RdW;
-
-logic                           RegWriteW;
 logic [1:0]                     ResultSrcW;
+
 Fetch fetch(
     .PCSrc(PCSrcE),
     .clk(clk),
@@ -217,6 +215,14 @@ cuMW CUMW(
     .ResultSrcM(ResultSrcM),
     .RegWriteW(RegWriteW),
     .ResultSrcW(ResultSrcW)
+);
+
+mux_3inputs resultmux(
+    .d0(ALUResultW),
+    .d1(ReadDataW),
+    .d2(PCPlus4W),
+    .s(ResultSrcW),
+    .out(ResultW)
 );
 
 endmodule
