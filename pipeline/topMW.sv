@@ -4,12 +4,14 @@ module topMW#(
     input logic clk,
     input logic [DATA_WIDTH-1:0]     ALUResultM,
     input logic [DATA_WIDTH-1:0]     ReadDataM,
-    // RdE
     input logic [DATA_WIDTH-1:0]     PCPlus4M,
+
+    // RdM and RdW
+    // input logic [5:0]             RdM,
+    // output logic [5:0]            RdW,
 
     output logic [DATA_WIDTH-1:0]    ALUResultW,
     output logic [DATA_WIDTH-1:0]    ReadDataW,
-    // RdM
     output logic [DATA_WIDTH-1:0]    PCPlus4W
 );
 

@@ -4,12 +4,14 @@ module topEM#(
     input logic clk,
     input logic [DATA_WIDTH-1:0]     ALUResultE,
     input logic [DATA_WIDTH-1:0]     WriteDataE,
-    // RdE
     input logic [DATA_WIDTH-1:0]     PCPlus4E,
+
+    // RdE and RdM
+    // input logic [5:0]             RdE,
+    // output logic [5:0]            RdM,
 
     output logic [DATA_WIDTH-1:0]    ALUResultM,
     output logic [DATA_WIDTH-1:0]    WriteDataM,
-    // RdM
     output logic [DATA_WIDTH-1:0]    PCPlus4M
 );
 
