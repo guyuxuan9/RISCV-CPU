@@ -21,4 +21,3 @@ Register file is written on falling edge of CLK
 
 ## Sample
 ![image](https://user-images.githubusercontent.com/58468284/205861052-39326a98-bbf0-4428-95f8-4ff8f7ecbdb9.png)
-<img src=Reference.png>
