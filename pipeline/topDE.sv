@@ -1,12 +1,13 @@
 module topDE#(
     parameter DATA_WIDTH = 32
 )(
-    input logic clk,
+    input logic                      clk,
     input logic [DATA_WIDTH-1:0]     RD1D,
     input logic [DATA_WIDTH-1:0]     RD2D,
     input logic [DATA_WIDTH-1:0]     PCD,
     input logic [DATA_WIDTH-1:0]     ImmExtD,
     input logic [DATA_WIDTH-1:0]     PCPlus4D,
+    input logic [4:0]                RdD,  // A3
 
     // RdD and RdE
     // input logic [5:0]             RdD,
@@ -16,34 +17,41 @@ module topDE#(
     output logic [DATA_WIDTH-1:0]    RD2E,
     output logic [DATA_WIDTH-1:0]    PCE,
     output logic [DATA_WIDTH-1:0]    ImmExtE,
-    output logic [DATA_WIDTH-1:0]    PCPlus4E
+    output logic [DATA_WIDTH-1:0]    PCPlus4E,
+    output logic [4:0]               RdE
 );
 
-reg pc(
+reg pc_regDE(
     .clk(clk),
     .in(PCD),
     .out(PCE)
 );
 
-reg rd1(
+reg rd1_regDE(
     .clk(clk),
     .in(RD1D),
     .out(RD1E)
 );
 
-reg rd2(
+reg rd2_regDE(
     .clk(clk),
     .in(RD2D),
     .out(RD2E)
 );
 
-reg immext(
+reg rd3_regDE(      // destination register
+    .clk(clk),
+    .in(RdD),
+    .out(RdE)
+);
+
+reg immExt_regDE(
     .clk(clk),
     .in(ImmExtD),
     .out(ImmExtE)
 );
 
-reg pcplus4(
+reg pcplus4_regDE(
     .clk(clk),
     .in(PCPlus4D),
     .out(PCPlus4E)

@@ -5,6 +5,7 @@ module topEM#(
     input logic [DATA_WIDTH-1:0]     ALUResultE,
     input logic [DATA_WIDTH-1:0]     WriteDataE,
     input logic [DATA_WIDTH-1:0]     PCPlus4E,
+    input logic [4:0]                RdE,
 
     // RdE and RdM
     // input logic [5:0]             RdE,
@@ -12,22 +13,29 @@ module topEM#(
 
     output logic [DATA_WIDTH-1:0]    ALUResultM,
     output logic [DATA_WIDTH-1:0]    WriteDataM,
-    output logic [DATA_WIDTH-1:0]    PCPlus4M
+    output logic [DATA_WIDTH-1:0]    PCPlus4M,
+    output logic [4:0]               RdM
 );
 
-reg aluresult(
+reg aluresult_regEM(
     .clk(clk),
     .in(ALUResultE),
     .out(ALUResultM)
 );
 
-reg writedata(
+reg writedata_regEM(
     .clk(clk),
     .in(WriteDataE),
     .out(WriteDataM)
 );
 
-reg pcplus4(
+reg rd3_regEM(
+    .clk(clk),
+    .in(RdE),
+    .out(RdM)
+);
+
+reg pcplus4_regEM(
     .clk(clk),
     .in(PCPlus4E),
     .out(PCPlus4M)

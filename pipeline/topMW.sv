@@ -5,29 +5,36 @@ module topMW#(
     input logic [DATA_WIDTH-1:0]     ALUResultM,
     input logic [DATA_WIDTH-1:0]     ReadDataM,
     input logic [DATA_WIDTH-1:0]     PCPlus4M,
-
+    input logic [4:0]                RdM,
     // RdM and RdW
     // input logic [5:0]             RdM,
     // output logic [5:0]            RdW,
 
     output logic [DATA_WIDTH-1:0]    ALUResultW,
     output logic [DATA_WIDTH-1:0]    ReadDataW,
-    output logic [DATA_WIDTH-1:0]    PCPlus4W
+    output logic [DATA_WIDTH-1:0]    PCPlus4W,
+    output logic [4:0]               RdW
 );
 
-reg aluresult(
+reg aluresult_regMW(
     .clk(clk),
     .in(ALUResultM),
     .out(ALUResultW)
 );
 
-reg readdata(
+reg readdata_regMW(
     .clk(clk),
     .in(ReadDataM),
     .out(ReadDataW)
 );
 
-reg pcplus4(
+reg rd3_regMW(
+    .clk(clk),
+    .in(RdM),
+    .out(RdW)
+);
+
+reg pcplus4_regMW(
     .clk(clk),
     .in(PCPlus4M),
     .out(PCPlus4W)
