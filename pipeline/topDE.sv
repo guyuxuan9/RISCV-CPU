@@ -8,16 +8,16 @@ module topDE#(
     input logic [DATA_WIDTH-1:0]     ImmExtD,
     input logic [DATA_WIDTH-1:0]     PCPlus4D,
     input logic [4:0]                RdD,  // A3
-    input logic [4:0]                Rs1D   // Bits 19:15 of InstrD
-    input logic [4:0]                Rs2D   // Bits 24:20 of InstrD
+    //input logic [4:0]                Rs1D   // Bits 19:15 of InstrD
+    //input logic [4:0]                Rs2D   // Bits 24:20 of InstrD
     output logic [DATA_WIDTH-1:0]    RD1E,
     output logic [DATA_WIDTH-1:0]    RD2E,
     output logic [DATA_WIDTH-1:0]    PCE,
     output logic [DATA_WIDTH-1:0]    ImmExtE,
     output logic [DATA_WIDTH-1:0]    PCPlus4E,
     output logic [4:0]               RdE,
-    output logic [4:0]               Rs1E,
-    output logic [4:0]               Rs2E
+    //output logic [4:0]               Rs1E,
+    //output logic [4:0]               Rs2E
 );
 
 register pc_regDE(
