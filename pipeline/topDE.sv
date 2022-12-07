@@ -17,37 +17,37 @@ module topDE#(
     output logic [4:0]               RdE
 );
 
-reg pc_regDE(
+register pc_regDE(
     .clk(clk),
     .in(PCD),
     .out(PCE)
 );
 
-reg rd1_regDE(
+register rd1_regDE(
     .clk(clk),
     .in(RD1D),
     .out(RD1E)
 );
 
-reg rd2_regDE(
+register rd2_regDE(
     .clk(clk),
     .in(RD2D),
     .out(RD2E)
 );
 
-reg #(5) rd3_regDE(      // destination register, initialise DATA_WIDTH to 5
+register #(5) rd3_regDE(      // destination register, initialise DATA_WIDTH to 5
     .clk(clk),
     .in(RdD),
     .out(RdE)
 );
 
-reg immExt_regDE(
+register immExt_regDE(
     .clk(clk),
     .in(ImmExtD),
     .out(ImmExtE)
 );
 
-reg pcplus4_regDE(
+register pcplus4_regDE(
     .clk(clk),
     .in(PCPlus4D),
     .out(PCPlus4E)

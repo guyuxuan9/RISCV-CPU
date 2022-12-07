@@ -7,6 +7,8 @@ module reg#(
 );
 
 // synchronous
-always_ff @(negedge ck) begin
-    out = in;
+always_ff @(negedge clk) begin
+    out <= in;
 end
+
+endmodule

@@ -77,7 +77,7 @@ Fetch fetch(
     .jalrmuxSel(jalrmuxSelE),
     .ALUResult(ALUResultE),
     .RD(Instr),         // output
-    .PCPlus4(PCPlus4)   // output
+    .PCPlus4(PCPlus4),   // output
     .PC(PC)             // output
 );
 

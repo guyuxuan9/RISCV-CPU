@@ -10,19 +10,19 @@ module topFD#(
     output logic [DATA_WIDTH-1:0]    PCPlus4D
 );
 
-reg pc_regFD(
+register pc_regFD(
     .clk(clk),
     .in(PCF),
     .out(PCD)
 );
 
-reg instr_regFD(
+register instr_regFD(
     .clk(clk),
     .in(InstrF),
     .out(InstrD)
 );
 
-reg PCPlus4FD(
+register PCPlus4FD(
     .clk(clk),
     .in(PCPlus4F),
     .out(PCPlus4D)
