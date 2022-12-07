@@ -13,6 +13,6 @@ always_comb
     case(s)
     2'b00:  out = d0;
     2'b01:  out = d1;
-    2'b02:  out = d2;
+    2'b10:  out = d2;
     endcase
 endmodule

@@ -5,7 +5,7 @@ module cuEM(
     input logic                 MemWriteE,
     output logic                RegWriteM,
     output logic    [1:0]       ResultSrcM,
-    output logic                MemWriteM,
+    output logic                MemWriteM
 );
 
 register #(1) RegWrite_regEM(

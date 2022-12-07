@@ -1,4 +1,4 @@
-module reg#(
+module register#(
     parameter DATA_WIDTH = 32
 )(
     input logic                    clk,

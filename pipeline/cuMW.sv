@@ -3,7 +3,7 @@ module cuMW(
     input logic                 RegWriteM,
     input logic     [1:0]       ResultSrcM,
     output logic                RegWriteW,
-    output logic    [1:0]       ResultSrcW,
+    output logic    [1:0]       ResultSrcW
 );
 
 register #(1) RegWrite_regMW(
