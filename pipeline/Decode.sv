@@ -16,28 +16,27 @@ module Decode #(
     output logic                            MemWriteD,
     output logic                            JumpD,
     output logic                            BranchD,
-    output logic                            ALUControlD,
+    output logic [2:0]                      ALUControlD,
     output logic                            ALUSrcD,
-    output logic                            ImmSrcD,
     output logic                            jalrmuxSelD,
     output logic [DATA_WIDTH-1:0]           ImmExtD
 );
 
-
+logic [2:0]                           ImmSrcD;
 
 control_unit cu(
     .op(InstrD[6:0]),       // input
     .funct3(InstrD[14:12]), // input
     .funct7(InstrD[30]),    // input
-    .RegWrite(RegWriteD),
-    .ResultSrc(ResultSrcD),
-    .MemWrite(MemWriteD),
-    .Jump(JumpD),
-    .Branch(BranchD),
-    .ALUControl(ALUControlD),
-    .ALUSrc(ALUSrcD),
-    .ImmSrc(ImmSrcD),
-    .jalrmuxSel(jalrmuxSelD)
+    .RegWriteD(RegWriteD),
+    .ResultSrcD(ResultSrcD),
+    .MemWriteD(MemWriteD),
+    .JumpD(JumpD),
+    .BranchD(BranchD),
+    .ALUControlD(ALUControlD),
+    .ALUSrcD(ALUSrcD),
+    .ImmSrcD(ImmSrcD),
+    .JalrmuxSelD(jalrmuxSelD)
 );
 
 regfile RegFile(

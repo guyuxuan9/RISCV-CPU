@@ -29,6 +29,6 @@ alu ALU(
     .ALUResult(ALUResult)
 );
 
-assgin PCTargetE = PCE + ImmExtE;
+assign PCTargetE = PCE + ImmExtE;
 
 endmodule

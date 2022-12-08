@@ -8,7 +8,7 @@ module pipelined_top#(
 );
 
 logic                           PCSrcE; // output from execution stage
-logic                           PCTargetE; // output from execution stage
+logic [31:0]                    PCTargetE; // output from execution stage
 logic                           jalrmuxSelE; // output from execution stage
 logic [DATA_WIDTH-1:0]          ALUResultE;
 logic [DATA_WIDTH-1:0]          Instr;
@@ -25,7 +25,6 @@ logic [DATA_WIDTH-1:0]          RD1D;
 logic [DATA_WIDTH-1:0]          RD2D;
 logic [4:0]                     RdD;
 
-logic                           clk;
 logic                           RegWriteD;
 logic [1:0]                     ResultSrcD;
 logic                           MemWriteD;
@@ -50,10 +49,8 @@ logic                           JumpE;
 logic                           BranchE;
 logic [2:0]                     ALUControlE;
 logic                           ALUSrcE;
-logic                           JalrmuxSelE;
 
 logic                           ZeroE;
-logic [31:0]                    PCTargetE;
 logic [DATA_WIDTH-1:0]          ALUResultM;
 logic [DATA_WIDTH-1:0]          WriteDataM;
 logic [DATA_WIDTH-1:0]          PCPlus4M;
@@ -77,7 +74,7 @@ Fetch fetch(
     .jalrmuxSel(jalrmuxSelE),
     .ALUResult(ALUResultE),
     .RD(Instr),         // output
-    .PCPlus4(PCPlus4)   // output
+    .PCPlus4(PCPlus4),   // output
     .PC(PC)             // output
 );
 
@@ -85,7 +82,7 @@ topFD FD_reg(
     .clk(clk),
     .PCF(PC),
     .InstrF(Instr),
-    .PCPlus4(PCPlus4),
+    .PCPlus4F(PCPlus4),
     .PCD(PCD),
     .InstrD(InstrD),
     .PCPlus4D(PCPlus4D)
@@ -108,7 +105,7 @@ Decode decode(
     .BranchD(BranchD),
     .ALUControlD(ALUControlD),
     .ALUSrcD(ALUSrcD),
-    .JalrmuxSelD(JalrmuxSelD),
+    .jalrmuxSelD(JalrmuxSelD),
     .ImmExtD(ImmExtD)
 );
 
@@ -145,7 +142,7 @@ cuDE CUDE(
     .BranchE(BranchE),
     .ALUControlE(ALUControlE),
     .ALUSrcE(ALUSrcE),
-    .JalrmuxSelE(JalrmuxSelE)
+    .JalrmuxSelE(jalrmuxSelE)
 );
 
 PCSrcLogic PCSrcE_logic(

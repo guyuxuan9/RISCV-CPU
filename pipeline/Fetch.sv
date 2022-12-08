@@ -1,4 +1,4 @@
-module PC_instr#(
+module Fetch#(
     parameter ADDRESS_WIDTH = 32,
               DATAOUT_WIDTH = 32
 )(

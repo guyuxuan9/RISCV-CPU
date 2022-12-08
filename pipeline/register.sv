@@ -1,4 +1,4 @@
-module reg#(
+module register#(
     parameter DATA_WIDTH = 32
 )(
     input logic                    clk,
@@ -7,6 +7,8 @@ module reg#(
 );
 
 // synchronous
-always_ff @(negedge ck) begin
-    out = in;
+always_ff @(negedge clk) begin
+    out <= in;
 end
+
+endmodule

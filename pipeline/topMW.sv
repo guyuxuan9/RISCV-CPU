@@ -12,25 +12,25 @@ module topMW#(
     output logic [4:0]               RdW
 );
 
-reg aluresult_regMW(
+register aluresult_regMW(
     .clk(clk),
     .in(ALUResultM),
     .out(ALUResultW)
 );
 
-reg readdata_regMW(
+register readdata_regMW(
     .clk(clk),
     .in(ReadDataM),
     .out(ReadDataW)
 );
 
-reg #(5) rd3_regMW(  // destination register, initialise DATA_WIDTH to 5
+register #(5) rd3_regMW(  // destination register, initialise DATA_WIDTH to 5
     .clk(clk),
     .in(RdM),
     .out(RdW)
 );
 
-reg pcplus4_regMW(
+register pcplus4_regMW(
     .clk(clk),
     .in(PCPlus4M),
     .out(PCPlus4W)
