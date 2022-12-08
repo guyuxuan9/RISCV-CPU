@@ -28,15 +28,15 @@ control_unit cu(
     .op(InstrD[6:0]),       // input
     .funct3(InstrD[14:12]), // input
     .funct7(InstrD[30]),    // input
-    .RegWriteD(RegWriteD),
-    .ResultSrcD(ResultSrcD),
-    .MemWriteD(MemWriteD),
-    .JumpD(JumpD),
-    .BranchD(BranchD),
-    .ALUControlD(ALUControlD),
-    .ALUSrcD(ALUSrcD),
-    .ImmSrcD(ImmSrcD),
-    .JalrmuxSelD(jalrmuxSelD)
+    .RegWrite(RegWriteD),
+    .ResultSrc(ResultSrcD),
+    .MemWrite(MemWriteD),
+    .Jump(JumpD),
+    .Branch(BranchD),
+    .ALUControl(ALUControlD),
+    .ALUSrc(ALUSrcD),
+    .ImmSrc(ImmSrcD),
+    .JalrmuxSel(jalrmuxSelD)
 );
 
 regfile RegFile(
