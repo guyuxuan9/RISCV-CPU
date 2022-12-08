@@ -5,10 +5,10 @@ module control_unit #(
     input logic      [2:0]      funct3,  // Instr[14:12]
     input logic                 funct7,  // Instr[30]
     output logic                RegWrite,
-    output logic     [1:0]      ResultSrc,  // to be completed!!!!
+    output logic     [1:0]      ResultSrc,  
     output logic                MemWrite,
-    output logic                Jump, // to be completed!!!
-    output logic                Branch, // to be completed!!!
+    output logic                Jump, 
+    output logic                Branch, 
     output logic     [2:0]      ALUControl,
     output logic                ALUSrc,
     output logic     [2:0]      ImmSrc,

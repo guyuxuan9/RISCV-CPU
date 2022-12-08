@@ -43,7 +43,7 @@ register #(5) rd3_regDE(      // destination register, initialise DATA_WIDTH to 
     .in(RdD),
     .out(RdE)
 );
-*/
+/*
 register rs1_regDE(
     .clk(clk),
     .in(Rs1D),
@@ -55,7 +55,7 @@ register rs2_regDE(
     .in(Rs2D),
     .out(Rs2E)
 );
-/*
+*/
 register immExt_regDE(
     .clk(clk),
     .in(ImmExtD),

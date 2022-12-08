@@ -39,7 +39,7 @@ int main(int argc, char **argv, char **env) {
     if (simcyc < 30)   top->trigger = 0;
     else               top->trigger = 1;
 
-    if (simcyc == 20)  top->rst = 1;
+    if (simcyc == 50)  top->rst = 1;
     else               top->rst = 0;
   
 
