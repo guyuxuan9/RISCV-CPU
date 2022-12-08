@@ -8,16 +8,12 @@ module topDE#(
     input logic [DATA_WIDTH-1:0]     ImmExtD,
     input logic [DATA_WIDTH-1:0]     PCPlus4D,
     input logic [4:0]                RdD,  // A3
-    //input logic [4:0]                Rs1D   // Bits 19:15 of InstrD
-    //input logic [4:0]                Rs2D   // Bits 24:20 of InstrD
     output logic [DATA_WIDTH-1:0]    RD1E,
     output logic [DATA_WIDTH-1:0]    RD2E,
     output logic [DATA_WIDTH-1:0]    PCE,
     output logic [DATA_WIDTH-1:0]    ImmExtE,
     output logic [DATA_WIDTH-1:0]    PCPlus4E,
     output logic [4:0]               RdE,
-    //output logic [4:0]               Rs1E,
-    //output logic [4:0]               Rs2E
 );
 
 register pc_regDE(
@@ -43,19 +39,7 @@ register #(5) rd3_regDE(      // destination register, initialise DATA_WIDTH to 
     .in(RdD),
     .out(RdE)
 );
-*/
-register rs1_regDE(
-    .clk(clk),
-    .in(Rs1D),
-    .out(Rs1E)
-);
 
-register rs2_regDE(
-    .clk(clk),
-    .in(Rs2D),
-    .out(Rs2E)
-);
-/*
 register immExt_regDE(
     .clk(clk),
     .in(ImmExtD),

@@ -8,6 +8,8 @@ JAL a3, iloop
 
 iloop: # acts as a for loop (with n = 8)
 beq a2, t0, main
+addi x0, x0, 0 #no-op for control hazard
+addi x0, x0, 0 #no-op for control hazard
 addi a2, a2, 1 # increment 1
 JAL a1, SL  
  JALR a4, a3, 0 # return to address stored in a3
