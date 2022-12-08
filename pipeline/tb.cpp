@@ -4,8 +4,8 @@
 #define MAX_SIM_CYC 1000
 
 int main(int argc, char **argv, char **env) {
-  int simcyc;     // simulation clock count
-  int tick;       // each clk cycle has two ticks for two edges
+  int simcyc;                                       // simulation clock count
+  int tick;                                         // each clk cycle has two ticks for two edges
 
   Verilated::commandArgs(argc, argv);
   // init top verilog instance
