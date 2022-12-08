@@ -6,6 +6,7 @@ module Decode #(
     input logic  [4:0]                      RdW, // output from write back stage
     input logic                             RegWriteW, // output from write back stage
     input logic  [DATA_WIDTH-1:0]           ResultW, // output from write back stage
+    
     output logic [DATA_WIDTH-1:0]           RD1,
     output logic [DATA_WIDTH-1:0]           RD2,
     output logic [DATA_WIDTH-1:0]           a0,
