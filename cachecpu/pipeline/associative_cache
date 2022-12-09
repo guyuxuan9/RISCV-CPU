@@ -3,8 +3,8 @@ module cachemem#(
                 DATA_WIDTH = 122
 )(
     input logic     [31:0]       memaddr,
-    //input logic     [31:0]       inputdata1,
-    //input logic     [31:0]       inputdata0,
+    input logic     [31:0]       inputdata1,
+    input logic     [31:0]       inputdata0,
     input logic     [31:0]       inputdata,
     output logic    [31:0]       dataout1,
     output logic    [31:0]       dataout0,
