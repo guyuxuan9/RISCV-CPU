@@ -20,7 +20,8 @@ module alu #(
             // Or
             3'b011: ALUResult  = ALUSrcA | ALUSrcB;
             // SLT
-            3'b100: ALUResult  = ALUSrcA < ALUSrcB;
+            // 3'b100: ALUResult  = ALUSrcA < ALUSrcB;
+            // gives error messages
             // Xor
             3'b101: ALUResult  = ALUSrcA ^ ALUSrcB;
             // SLL
