@@ -1,9 +1,9 @@
 module control_unit #(
-    parameter ADDRESS_WIDTH = 32
+    //parameter ADDRESS_WIDTH = 32
 )(
-    input logic      [6:0]      op,      // Instr[6:0]
-    input logic      [2:0]      funct3,  // Instr[14:12]
-    input logic                 funct7,  // Instr[30]
+    input logic      [6:0]      op,         // Instr[6:0]
+    input logic      [2:0]      funct3,     // Instr[14:12]
+    input logic                 funct7,     // Instr[30]
     output logic                RegWrite,
     output logic     [1:0]      ResultSrc,  
     output logic                MemWrite,
@@ -43,12 +43,15 @@ always_comb begin
                 end
 
                 3'b001: // slli
-                begin
-                    RegWrite = 1'b1;
-                    ImmSrc = 3'b000;
-                    ALUControl = 3'b110;
-                    ALUSrc = 1'b1;   
-                end
+                    case(funct7)
+                        1'b0:
+                        begin
+                            RegWrite = 1'b1;
+                            ImmSrc = 3'b000;
+                            ALUControl = 3'b110;
+                            ALUSrc = 1'b1;   
+                        end
+                    endcase
             endcase
             end
         7'b1100011: begin // branch instructions

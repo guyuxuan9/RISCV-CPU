@@ -13,7 +13,7 @@ module topDE#(
     output logic [DATA_WIDTH-1:0]    PCE,
     output logic [DATA_WIDTH-1:0]    ImmExtE,
     output logic [DATA_WIDTH-1:0]    PCPlus4E,
-    output logic [4:0]               RdE,
+    output logic [4:0]               RdE
 );
 
 register pc_regDE(
