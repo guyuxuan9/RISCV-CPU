@@ -13,7 +13,7 @@ module topregalu #(
     input logic                                      MemWrite,   
     input logic        [2:0]                         ALUControl,
     input logic        [DATA_WIDTH-1:0]              ImmOp,
-    input logic        [32:0]                        PC,
+    input logic        [31:0]                        PC,
     input logic                                      jalmuxSel, // select for the jalmux
     output logic                                     eq,
     output logic       [DATA_WIDTH-1:0]              a0,
