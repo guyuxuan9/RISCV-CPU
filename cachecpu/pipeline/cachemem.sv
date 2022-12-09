@@ -18,7 +18,8 @@ always_comb begin
     if(hit)
         dataout = ram_array[memaddr[4:2]][31:0];
     else
-        dataout = inputdata; //Should this be implemented?
+        dataout = inputdata;
+        ram_array[memaddr[4:2]][31:0] = inputdata;
         ram_array[memaddr[4:2]][58:32] = memaddr[31:5];
         ram_array[memaddr[4:2]][59] = 1'b1; 
 end

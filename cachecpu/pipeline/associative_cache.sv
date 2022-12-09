@@ -3,17 +3,15 @@ module cachemem#(
                 DATA_WIDTH = 122
 )(
     input logic     [31:0]       memaddr,
-    input logic     [31:0]       inputdata1,
-    input logic     [31:0]       inputdata0,
     input logic     [31:0]       inputdata,
-    output logic    [31:0]       dataout1,
-    output logic    [31:0]       dataout0,
     output logic    [31:0]       dataout
 );
 
 logic hit;
 logic hit1;
 logic hit0;
+logic [31:0] dataout0;
+logic [31:0] dataout1;
 
 logic [122-1:0] ram_array [1:0]; 
 
@@ -27,7 +25,8 @@ always_comb begin
     if(hit1)
         dataout1 = ram_array[memaddr[3:2]][92:61];
     else
-        dataout1 = inputdata1;
+        dataout1 = inputdata;
+        ram_array[memaddr[3:2]][92:61] = inputdata;
         ram_array[memaddr[3:2]][120:93] = memaddr[31:4];
         ram_array[memaddr[3:2]][121] = 1'b1;
     
@@ -36,7 +35,8 @@ always_comb begin
     if(hit0)
         dataout0 = ram_array[memaddr[3:2]][31:0];
     else
-        dataout0 = inputdata0;
+        dataout0 = inputdata;
+        ram_array[memaddr[3:2]][31:0] = inputdata;
         ram_array[memaddr[3:2]][59:32] = memaddr[31:4];
         ram_array[memaddr[3:2]][60] = 1'b1;
     
