@@ -1,0 +1,40 @@
+module cachemem#(
+    parameter   ADDRESS_WIDTH = 3,
+                DATA_WIDTH = 122
+)(
+    input logic     [31:0]       memaddr,
+    //input logic     [31:0]       inputdata1,
+    //input logic     [31:0]       inputdata0,
+    input logic     [31:0]       inputdata,
+    output logic    [31:0]       dataout1,
+    output logic    [31:0]       dataout0,
+    output logic    [31:0]       dataout
+);
+
+logic hit;
+
+logic [122-1:0] ram_array [1:0]; 
+
+always_comb begin
+    hit0 = 1'b0;
+    hit1 = 1'b0;
+    hit = 1'b0;
+    if((memaddr[31:4] ~^ ram_array[memaddr[3:2]][120:93]) & ram_array[memaddr[3:2]][121])
+        hit1 = 1'b1;
+    if(hit1)
+        dataout1 = ram_array[memaddr[3:2]][92:61];
+    if((memaddr[31:4] ~^ ram_array[memaddr[3:2]][59:32]) & ram_array[memaddr[3:2]][60])
+        hit0 = 1'b1;
+    if(hit0)
+        dataout0 = ram_array[memaddr[3:2]][31:0];
+    if(hit1 | hit0)
+        hit = 1'b1;
+    if(hit)
+        assign dataout = hit1 ? dataout1 : dataout0;
+    else
+        dataout = inputdata;
+        ram_array[memaddr[4:2]][58:32] = memaddr[31:4];
+        ram_array[memaddr[4:2]][59] = 1'b1; 
+end
+
+endmodule
