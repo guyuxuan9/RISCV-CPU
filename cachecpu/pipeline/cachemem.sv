@@ -4,7 +4,7 @@ module cachemem#(
 )(
     input logic     [31:0]        memaddr,
     input logic     [31:0]        inputdata,
-    output logic    [31:0]       dataout 
+    output logic    [31:0]        dataout
 );
 
 logic hit;
