@@ -12,11 +12,10 @@ module PC #(
 );
 
 always_ff@(posedge clk) begin
-    if (rst)        PC <= {ADDRESS_WIDTH{1'b0}}; // reset
+    if (rst)        PC <= 32'hBFC00000; // reset
 
-    if (trigger)
+    else if (trigger)
         if (jalrmuxSel) // jalr instruction
-           // PC <= rd1 + ImmOp;
            PC <= ALUResult;
         else
             if (PCSrc)      PC <= PCTarget;

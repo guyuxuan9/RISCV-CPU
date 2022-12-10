@@ -16,7 +16,7 @@ int main(int argc, char **argv, char **env) {
     top->trace (tfp, 99);
     tfp->open ("pipelined_top.vcd");
 
-    top->rst = 0;
+    top->rst = 1;
     top->clk = 1;
     top->trigger = 1;
 
@@ -32,8 +32,8 @@ int main(int argc, char **argv, char **env) {
     // if (simcyc < 30)   top->trigger = 0;
     // else               top->trigger = 1;
 
-    // if (simcyc == 20)  top->rst = 1;
-    // else               top->rst = 0;
+     if (simcyc < 2)  top->rst = 1;
+     else               top->rst = 0;
   
     if (Verilated::gotFinish())  exit(0);
   }

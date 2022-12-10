@@ -1,2 +1,2 @@
 obj_dir/
-fullcpu.vcd
+pipelined_top.vcd
