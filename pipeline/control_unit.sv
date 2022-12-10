@@ -54,7 +54,8 @@ always_comb begin
                     endcase
             endcase
             end
-        7'b1100011: begin // branch instructions
+        7'b1100011: // branch instructions
+            begin 
             Branch = 1'b1;
             
             case(funct3)
@@ -72,6 +73,7 @@ always_comb begin
 
             endcase
             end
+            
         7'b0100011: begin// store instructions
             ResultSrc = 2'b01;
             case(funct3)

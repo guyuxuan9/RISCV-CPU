@@ -8,6 +8,7 @@ module topDE#(
     input logic [DATA_WIDTH-1:0]     ImmExtD,
     input logic [DATA_WIDTH-1:0]     PCPlus4D,
     input logic [4:0]                RdD,  // A3
+    
     output logic [DATA_WIDTH-1:0]    RD1E,
     output logic [DATA_WIDTH-1:0]    RD2E,
     output logic [DATA_WIDTH-1:0]    PCE,
