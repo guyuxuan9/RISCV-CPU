@@ -5,6 +5,7 @@ module topFD#(
     input logic [DATA_WIDTH-1:0]     PCF,
     input logic [DATA_WIDTH-1:0]     InstrF,
     input logic [DATA_WIDTH-1:0]     PCPlus4F,
+    
     output logic [DATA_WIDTH-1:0]    PCD,
     output logic [DATA_WIDTH-1:0]    InstrD,
     output logic [DATA_WIDTH-1:0]    PCPlus4D

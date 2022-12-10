@@ -73,9 +73,9 @@ Fetch fetch(
     .PCTarget(PCTargetE),
     .jalrmuxSel(jalrmuxSelE),
     .ALUResult(ALUResultE),
-    .RD(Instr),         // output
-    .PCPlus4(PCPlus4),   // output
-    .PC(PC)             // output
+    .RD(Instr),                 // output
+    .PCPlus4(PCPlus4),          // output
+    .PC(PC)                     // output
 );
 
 topFD FD_reg(
