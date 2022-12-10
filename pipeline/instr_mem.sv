@@ -7,12 +7,12 @@ module instr_mem #(
     output logic [DATAOUT_WIDTH-1:0] RD
 );
 
-logic [DATA_WIDTH-1:0] rom_array [55:0]; // [2**5 - 1:0]
+logic [DATA_WIDTH-1:0] rom_array [1023:0]; 
 
 initial begin
         
         $display("Loading rom.");
-        $readmemh("test3.mem", rom_array);
+        $readmemh("test.mem", rom_array);
         // rom_array[28:2**32-1] <= '{default:'1};
 end;
 
