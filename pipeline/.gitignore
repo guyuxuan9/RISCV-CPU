@@ -1,6 +1,2 @@
-<<<<<<< HEAD
 obj_dir/
-=======
-/obj_dir
->>>>>>> 13837561dae54fd7a370f4ee88160402bc34b95c
 pipelined_top.vcd
