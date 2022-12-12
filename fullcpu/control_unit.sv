@@ -138,6 +138,7 @@ always_comb begin
                     MemWrite = 1'b1;
                     ImmSrc = 3'b001;
                     ALUControl = 3'b000;
+                    ALUSrc = 1'b1;
                 end
 
                 3'b000: // sb
@@ -145,6 +146,7 @@ always_comb begin
                     ImmSrc = 3'b001;
                     ALUSrc = 1'b1;
                     MemWrite = 1'b1;
+                    ALUSrc = 1'b1;
                 end
             endcase
 
@@ -156,6 +158,15 @@ always_comb begin
                     RegWrite = 1'b1;
                     ImmSrc = 3'b000;
                     ALUControl = 3'b000;
+                    ALUSrc = 1'b1;
+                end 
+
+                3'b100: // lbu
+                begin
+                    ImmSrc = 3'b110;
+                    ALUSrc = 1'b1;
+                    ResultSrc = 1'b1;
+                    RegWrite = 1'b1;
                 end
             endcase
         
@@ -187,14 +198,12 @@ always_comb begin
                 ALUSrc = 1'b1;
             end
 
-        7'b0000011:  
-            case(funct3)  
-                3'b100: // lbu
+        7'b0110011: // R-type
+            case(funct3)
+                3'b000: // add
                 begin
-                    ImmSrc = 3'b110;
-                    ALUSrc = 1'b1;
-                    ResultSrc = 1'b1;
                     RegWrite = 1'b1;
+                    ResultSrc = 1'b0;
                 end
             endcase
     endcase
