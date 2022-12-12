@@ -54,6 +54,7 @@ logic                           ZeroE;
 logic [DATA_WIDTH-1:0]          ALUResultM;
 logic [DATA_WIDTH-1:0]          WriteDataM;
 logic [DATA_WIDTH-1:0]          PCPlus4M;
+logic [DATA_WIDTH-1:0]          DataMemOut;
 logic [4:0]                     RdM;
 logic                           RegWriteM;
 logic [1:0]                     ResultSrcM;
@@ -186,12 +187,18 @@ cuEM CUEM(
     .MemWriteM(MemWriteM)
 );
 
+cachemem CacheMem(
+    .memaddr(ALUResultM),
+    .inputdata(DataMemOut),
+    .dataout(MemOut)
+);
+
 datamem DataMem(
     .clk(clk),
     .WE(MemWriteM),
     .A(ALUResultM),
     .WD(WriteDataM),
-    .RD(MemOut)
+    .RD(DataMemOut)
 );
 
 topMW MW_reg(

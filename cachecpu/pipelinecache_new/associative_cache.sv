@@ -1,4 +1,4 @@
-module cachemem#(
+module associative_cache#(
     parameter   ADDRESS_WIDTH = 2,
                 DATA_WIDTH = 122
 )(
