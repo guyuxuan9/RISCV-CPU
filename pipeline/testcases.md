@@ -2,14 +2,14 @@
 
 Simple testcase to see if it is fundamentally working:
 
-'''
+```
 addi a0, zero, 0x00   # initialize a0 to 0x00
 addi a1, zero, 0x01   # initialize a1 to 0x01
 addi a2, zero, 0x02   # initialize a2 to 0x02
 addi a3, zero, 0x03   # initialize a3 to 0x03
 addi a4, zero, 0x04   # initialize a4 to 0x04
 addi a5, zero, 0x05   # initialize a5 to 0x05
-'''
+```
 
 test3.mem
 
@@ -17,10 +17,35 @@ test3.mem
 
 ## Test Case 2: Data Hazard due to Data Dependency
 
-'''
+```
 addi a1, zero, 0x01     # initialize a1 to 1
 addi a1, a1, 0x01       # increment a1 by 1
-'''
+addi a1, a1, 0x01       # increment a1 by 1
+```
+
+test2.mem
+
+
+Results:
+
+Solution:
+```
+addi a1, zero, 0x01     # initialize a1 to 1
+addi zero, zero, 0x00   # insert NOPs
+addi zero, zero, 0x00
+addi zero, zero, 0x00
+addi zero, zero, 0x00
+addi zero, zero, 0x00
+addi a1, a1, 0x01       # increment a1 by 1
+addi zero, zero, 0x00   # insert NOPs
+addi zero, zero, 0x00
+addi zero, zero, 0x00
+addi zero, zero, 0x00
+addi zero, zero, 0x00
+addi a1, a1, 0x01       # increment a1 by 1
+```
+
+test4.mem
 
 Results:
 

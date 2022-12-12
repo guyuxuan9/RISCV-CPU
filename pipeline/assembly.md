@@ -10,6 +10,7 @@ main:
     addi zero,zero,0x00
     JAL a3, iloop
     addi zero,zero,0x00
+
 iloop:                      # acts as a for loop (with n = 8)
     beq a2, t0, main
     addi zero,zero,0x00
@@ -19,6 +20,7 @@ iloop:                      # acts as a for loop (with n = 8)
     addi zero,zero,0x00
     JALR a4, a3, 0          # return to address stored in a3
 	addi zero,zero,0x00
+    
 SL:
     SLLI s0, s0, 0x01       # shift left logical by 1
     addi zero,zero,0x00
