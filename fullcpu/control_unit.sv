@@ -171,6 +171,14 @@ always_comb begin
                     jalrmuxSel = 1'b1;
                 end
             endcase
+
+        7'b0110111:     // lui
+            begin
+                ImmSrc = 3'b101;
+                RegWrite = 1'b1;
+                ALUControl = 3'b100;
+                ALUSrc = 1'b1;
+            end
     endcase
 end
 endmodule
