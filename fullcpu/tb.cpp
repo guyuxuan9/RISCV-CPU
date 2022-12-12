@@ -1,7 +1,7 @@
 #include "verilated.h"
 #include "verilated_vcd_c.h"
 #include "Vfullcpu.h"
-#define MAX_SIM_CYC 100000
+#define MAX_SIM_CYC 350000
 
 int main(int argc, char **argv, char **env) {
   int simcyc;                                       // simulation clock count

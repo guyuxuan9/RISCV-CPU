@@ -1,6 +1,6 @@
 #include "verilated.h"
 #include "verilated_vcd_c.h"
-#include "Vfullcpu.h"
+#include "Vpipelined_top.h"
 #include "vbuddy.cpp"     // include vbuddy code
 #define MAX_SIM_CYC 1000
 
@@ -11,12 +11,12 @@ int main(int argc, char **argv, char **env) {
 
   Verilated::commandArgs(argc, argv);
   // init top verilog instance
-  Vfullcpu * top = new Vfullcpu;
+  Vpipelined_top * top = new Vpipelined_top;
   // init trace dump
   Verilated::traceEverOn(true);
   VerilatedVcdC* tfp = new VerilatedVcdC;
   top->trace (tfp, 99);
-  tfp->open ("fullcpu.vcd");
+  tfp->open ("pipelined_top.vcd");
 
   // init Vbuddy
   if (vbdOpen()!=1) return(-1);

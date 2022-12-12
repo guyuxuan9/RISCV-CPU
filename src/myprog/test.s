@@ -1,0 +1,4 @@
+addi zero, zero, 0x00
+addi a1,zero,0x00
+addi a1,a1,0x01
+addi a1,a1,0x01
