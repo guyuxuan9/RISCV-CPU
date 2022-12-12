@@ -16,9 +16,9 @@ int main(int argc, char **argv, char **env) {
   top->trace (tfp, 99);
   tfp->open ("fullcpu.vcd");
  
-  top->rst = 0;
+  top->rst = 1;
   top->clk = 1;
-  top->trigger = 0;
+  top->trigger = 1;
 
   // run simulation for MAX_SIM_CYC clock cycles
   for (simcyc=0; simcyc<MAX_SIM_CYC; simcyc++) {
@@ -30,10 +30,10 @@ int main(int argc, char **argv, char **env) {
       top->eval ();
     }
 
-    if (simcyc < 30)   top->trigger = 0;
+    if (simcyc < 5)   top->trigger = 0;
     else               top->trigger = 1;
 
-    if (simcyc == 20)  top->rst = 1;
+    if (simcyc < 2)  top->rst = 1;
     else               top->rst = 0;
   
 
