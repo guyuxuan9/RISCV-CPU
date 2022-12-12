@@ -11,12 +11,10 @@ module blue_part #(
     output logic [ADDRESS_WIDTH-1:0]        PC
 );
 
-// logic  normal_pc;
-
 always_ff@(posedge clk) begin
-    if (rst)        PC <= {ADDRESS_WIDTH{1'b0}}; // reset
+    if (rst)        PC <= 32'hBFC00000; // reset
 
-    if (trigger)
+    else if (trigger)
         if (jalrmuxSel) // jalr instruction
             PC <= rd1 + ImmOp;
         else

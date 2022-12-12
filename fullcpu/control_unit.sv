@@ -139,6 +139,13 @@ always_comb begin
                     ImmSrc = 3'b001;
                     ALUControl = 3'b000;
                 end
+
+                3'b000: // sb
+                begin
+                    ImmSrc = 3'b001;
+                    ALUSrc = 1'b1;
+                    MemWrite = 1'b1;
+                end
             endcase
 
         7'b0000011: // load instructions
@@ -169,6 +176,25 @@ always_comb begin
                     RegWrite = 1'b1;
                     PCSrc = 1'b1;
                     jalrmuxSel = 1'b1;
+                end
+            endcase
+
+        7'b0110111:     // lui
+            begin
+                ImmSrc = 3'b101;
+                RegWrite = 1'b1;
+                ALUControl = 3'b100;
+                ALUSrc = 1'b1;
+            end
+
+        7'b0000011:  
+            case(funct3)  
+                3'b100: // lbu
+                begin
+                    ImmSrc = 3'b110;
+                    ALUSrc = 1'b1;
+                    ResultSrc = 1'b1;
+                    RegWrite = 1'b1;
                 end
             endcase
     endcase

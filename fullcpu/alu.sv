@@ -19,9 +19,13 @@ module alu #(
             3'b010: ALUResult  = ALUSrcA & ALUSrcB;
             // Or
             3'b011: ALUResult  = ALUSrcA | ALUSrcB;
+
             // SLT
             // 3'b100: ALUResult  = ALUSrcA < ALUSrcB;
             // gives error messages
+
+            // Instructions that only use SrcB, e.g. lui rd,upimm
+            3'b100: ALUResult = ALUSrcB;
             // Xor
             3'b101: ALUResult  = ALUSrcA ^ ALUSrcB;
             // SLL
