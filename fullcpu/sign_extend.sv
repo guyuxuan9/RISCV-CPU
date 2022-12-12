@@ -8,12 +8,15 @@ module sign_extend #(
 
 always_comb begin
     case(ImmSrc)
-        // I-type
+        // I-type sign extend
         3'b000: ImmExt[31:0] = {{20{instr[ADDRESS_WIDTH-1]}}, instr[ADDRESS_WIDTH-1:20]};
+        // I-type zero extend
+        3'b110: ImmExt[31:0] = {{20'b0},instr[ADDRESS_WIDTH-1:20]}
         // S-type
         3'b001: ImmExt[31:0] = {{20{instr[ADDRESS_WIDTH-1]}}, instr[ADDRESS_WIDTH-1:25], instr[11:7]};
         // B-type
         3'b010: ImmExt[31:0] = {{20{instr[ADDRESS_WIDTH-1]}}, instr[7], instr[30:25], instr[11:8], 1'b0};
+        
         // R-type
         // 3'b011: ImmExt[31:0] = instr; 
         // cannot be determined since only [31:7] bits in the input

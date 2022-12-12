@@ -179,6 +179,15 @@ always_comb begin
                 ALUControl = 3'b100;
                 ALUSrc = 1'b1;
             end
+
+        7'b0000011:  
+            case(funct3)  // lbu
+                3'b100:
+                    ImmSrc = 3'b110;
+                    ALUSrc = 1'b1;
+                    ResultSrc = 1'b1;
+                    RegWrite 1'b1;
+            endcase
     endcase
 end
 endmodule
