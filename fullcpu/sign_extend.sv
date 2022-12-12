@@ -11,7 +11,7 @@ always_comb begin
         // I-type sign extend
         3'b000: ImmExt[31:0] = {{20{instr[ADDRESS_WIDTH-1]}}, instr[ADDRESS_WIDTH-1:20]};
         // I-type zero extend
-        3'b110: ImmExt[31:0] = {{20'b0},instr[ADDRESS_WIDTH-1:20]}
+        3'b110: ImmExt[31:0] = {{20'b0},instr[ADDRESS_WIDTH-1:20]};
         // S-type
         3'b001: ImmExt[31:0] = {{20{instr[ADDRESS_WIDTH-1]}}, instr[ADDRESS_WIDTH-1:25], instr[11:7]};
         // B-type
