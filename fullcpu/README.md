@@ -1,4 +1,4 @@
-## Refernce Program on RISCV
+## Reference Program on RISCV
 - Gaussian pdf
 
 
