@@ -1,5 +1,5 @@
 module control_unit #(
-    //parameter ADDRESS_WIDTH = 32
+    // parameter ADDRESS_WIDTH = 32
 )(
     input logic      [6:0]      op,         // Instr[6:0]
     input logic      [2:0]      funct3,     // Instr[14:12]
@@ -54,6 +54,7 @@ always_comb begin
                     endcase
             endcase
             end
+
         7'b1100011: // branch instructions
             begin 
             Branch = 1'b1;
@@ -79,13 +80,24 @@ always_comb begin
             case(funct3)
                 3'b010: // sw
                 begin
+                    ResultSrc = 1'b1;
                     MemWrite = 1'b1;
                     ImmSrc = 3'b001;
                     ALUControl = 3'b000;
+                    ALUSrc = 1'b1;
                 end
-            endcase
+
+                3'b000: // sb
+                begin
+                    ImmSrc = 3'b001;
+                    ALUSrc = 1'b1;
+                    MemWrite = 1'b1;
+                    ALUSrc = 1'b1;
+                end
+            endcase    
         end
-        7'b0000011: begin// load instructions
+
+        7'b0000011: begin // load instructions
             ResultSrc = 2'b01;
             case(funct3)
                 3'b010: // lw
@@ -93,9 +105,19 @@ always_comb begin
                     RegWrite = 1'b1;
                     ImmSrc = 3'b000;
                     ALUControl = 3'b000;
+                    ALUSrc = 1'b1;
+                end
+
+                3'b100: // lbu
+                begin
+                    ImmSrc = 3'b110;
+                    ALUSrc = 1'b1;
+                    ResultSrc = 1'b1;
+                    RegWrite = 1'b1;
                 end
             endcase
         end
+
         7'b1101111:  // jal
             begin
                 ResultSrc = 2'b10;
@@ -113,6 +135,23 @@ always_comb begin
                     RegWrite = 1'b1;
                     JalrmuxSel = 1'b1;
                     Jump = 1'b1;
+                end
+            endcase
+        
+        7'b0110111: // lui
+            begin
+                ImmSrc = 3'b101;
+                RegWrite = 1'b1;
+                ALUControl = 3'b100;
+                ALUSrc = 1'b1;
+            end
+        
+        7'b0110011: // R-type
+            case(funct3)
+                3'b000: // add
+                begin
+                    RegWrite = 1'b1;
+                    ResultSrc = 1'b0;
                 end
             endcase
     endcase
