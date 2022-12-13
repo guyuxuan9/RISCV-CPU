@@ -1,7 +1,7 @@
 #include "verilated.h"
 #include "verilated_vcd_c.h"
 #include "Vpipelined_top.h"
-#define MAX_SIM_CYC 1000
+#define MAX_SIM_CYC 350000
 
 int main(int argc, char **argv, char **env) {
     int simcyc;                                       // simulation clock count
@@ -29,7 +29,7 @@ int main(int argc, char **argv, char **env) {
       top->eval ();
     }
 
-     if (simcyc < 10)   top->trigger = 0;
+     if (simcyc < 5)   top->trigger = 0;
      else               top->trigger = 1;
 
      if (simcyc < 2)  top->rst = 1;

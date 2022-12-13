@@ -1,7 +1,7 @@
 #include "verilated.h"
 #include "verilated_vcd_c.h"
 #include "Vpipelined_top.h"
-#include "vbuddy.cpp"   // include vbuddy code
+#include "vbuddy.cpp"                               // include vbuddy code
 #define MAX_SIM_CYC 350000
 
 int main(int argc, char **argv, char **env) {
@@ -40,11 +40,11 @@ int main(int argc, char **argv, char **env) {
     if (simcyc < 2)  top->rst = 1;
     else               top->rst = 0;
     
-    if (simcyc>124468) // triangle:315970   sine: 37525    gaussian:124468
-      {vbdPlot(int(top->a0),0,255);
+    if (simcyc > 124468)              // triangle:315970   sine: 37525    gaussian:124468
+      {vbdPlot(int(top->a0), 0, 255);
        vbdCycle(simcyc);}
+
     if (Verilated::gotFinish())  exit(0);
   }
-
 
 }
