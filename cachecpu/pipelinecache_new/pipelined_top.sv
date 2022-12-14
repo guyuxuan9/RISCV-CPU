@@ -34,6 +34,7 @@ logic [2:0]                     ALUControlD;
 logic                           ALUSrcD;
 logic                           JalrmuxSelD;
 logic [DATA_WIDTH-1:0]          ImmExtD;
+logic                           cache_WED;
 
 logic [DATA_WIDTH-1:0]          RD1E;
 logic [DATA_WIDTH-1:0]          RD2E;
@@ -41,6 +42,7 @@ logic [DATA_WIDTH-1:0]          PCE;
 logic [DATA_WIDTH-1:0]          ImmExtE;
 logic [DATA_WIDTH-1:0]          PCPlus4E;
 logic [4:0]                     RdE;
+logic                           cache_WEE;
 
 logic                           RegWriteE;
 logic [1:0]                     ResultSrcE;
@@ -59,6 +61,7 @@ logic [4:0]                     RdM;
 logic                           RegWriteM;
 logic [1:0]                     ResultSrcM;
 logic                           MemWriteM;
+logic                           cache_WEM;
 
 logic [DATA_WIDTH-1:0]          MemOut;
 logic [DATA_WIDTH-1:0]          ALUResultW;
@@ -107,7 +110,8 @@ Decode decode(
     .ALUControlD(ALUControlD),
     .ALUSrcD(ALUSrcD),
     .jalrmuxSelD(JalrmuxSelD),
-    .ImmExtD(ImmExtD)
+    .ImmExtD(ImmExtD),
+    .cache_WE(cache_WED)
 );
 
 topDE DE_reg(
@@ -136,6 +140,7 @@ cuDE CUDE(
     .ALUControlD(ALUControlD),
     .ALUSrcD(ALUSrcD),
     .JalrmuxSelD(JalrmuxSelD),
+    .cache_WED(cache_WED),
     .RegWriteE(RegWriteE),
     .ResultSrcE(ResultSrcE),
     .MemWriteE(MemWriteE),
@@ -143,7 +148,8 @@ cuDE CUDE(
     .BranchE(BranchE),
     .ALUControlE(ALUControlE),
     .ALUSrcE(ALUSrcE),
-    .JalrmuxSelE(jalrmuxSelE)
+    .JalrmuxSelE(jalrmuxSelE),
+    .cache_WEE(cache_WEE)
 );
 
 PCSrcLogic PCSrcE_logic(
@@ -182,14 +188,18 @@ cuEM CUEM(
     .RegWriteE(RegWriteE),
     .ResultSrcE(ResultSrcE),
     .MemWriteE(MemWriteE),
+    .cache_WEE(cache_WEE),
     .RegWriteM(RegWriteM),
     .ResultSrcM(ResultSrcM),
-    .MemWriteM(MemWriteM)
+    .MemWriteM(MemWriteM),
+    .cache_WEM(cache_WEM)
 );
 
 cachemem CacheMem(
     .memaddr(ALUResultM),
     .inputdata(DataMemOut),
+    .cache_WE(cache_WEM),
+    .clk(clk),
     .dataout(MemOut)
 );
 

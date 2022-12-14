@@ -8,6 +8,7 @@ module cuDE(
     input logic     [2:0]       ALUControlD,
     input logic                 ALUSrcD,
     input logic                 JalrmuxSelD,
+    input logic                 cache_WED,
 
     output logic                RegWriteE,
     output logic    [1:0]       ResultSrcE,
@@ -16,7 +17,8 @@ module cuDE(
     output logic                BranchE,
     output logic    [2:0]       ALUControlE,
     output logic                ALUSrcE,
-    output logic                JalrmuxSelE
+    output logic                JalrmuxSelE,
+    output logic                cache_WEE
 );
 
 register #(1) RegWrite_regDE(
@@ -65,6 +67,12 @@ register #(1) JalrMuxSel_regDE(
     .clk(clk),
     .in(JalrmuxSelD),
     .out(JalrmuxSelE)
+);
+
+register #(1) cache_WE_regDE(
+    .clk(clk),
+    .in(cache_WED),
+    .out(cache_WEE)
 );
 
 endmodule
