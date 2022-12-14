@@ -1,76 +1,56 @@
-addi s0, zero, 5
-addi zero, zero, 0
-addi s1, zero, 0
+Disassembly of section .text:
 
-LOOP: beq s0, zero, DONE
-lw s2, 4(s1)
-lw s3, 12(s1)
-lw s4, 8(s1)
-addi s0, s0, -1
-addi zero, zero, 0
-jal LOOP
-addi zero, zero, 0
+0000000000000000 :
+   0:	00500413          	li	s0,5
+   4:	00000493          	li	s1,0
+   8:	00000013          	nop
 
-DONE:
+000000000000000c :
+   c:	00040e63          	beqz	s0,28 
+  10:	0044a903          	lw	s2,4(s1)
+  14:	00c4a983          	lw	s3,12(s1)
+  18:	0084aa03          	lw	s4,8(s1)
+  1c:	fff40413          	addi	s0,s0,-1
+  20:	fedff06f          	j	c 
+  24:	00000013          	nop
 
-Machine code:
-
-00500413
-00100493
-00040c63
-0044a903
-00c4a983
-0084aa03
-fff40413
-fedff0ef
-
+machine code:
 00 50 04 13
-00 00 00 13
 00 00 04 93
-02 04 00 63
+00 00 00 13
+00 04 0e 63
 00 44 a9 03
 00 c4 a9 83
 00 84 aa 03
 ff f4 04 13
+fe df f0 6f
 00 00 00 13
-fe 9f f0 ef
+
+---------------------------------------
+Disassembly of section .text:
+
+0000000000000000 :
+   0:	00500413          	li	s0,5
+   4:	00000013          	nop
+   8:	00000493          	li	s1,0
+   c:	00000013          	nop
+
+0000000000000010 :
+  10:	00040c63          	beqz	s0,28 
+  14:	0044a903          	lw	s2,4(s1)
+  18:	0244aa03          	lw	s4,36(s1)
+  1c:	fff40413          	addi	s0,s0,-1
+  20:	ff1ff06f          	j	10 
+  24:	00000013          	nop
+
+machine code:
+00 50 04 13
 00 00 00 13
-
-00500413
-00000493
-00040c63
-0044a903
-00c4a983
-0084aa03
-fff40413
-fedff0ef
-
-Testing with store (swtest):
-addi s0, zero, 5
-addi s1, zero, 0
-addi s5, zero, 4
-LOOP: beq s0, zero, DONE
-sw s5, 4(s1)
-lw s2, 4(s1)
-sw s5, 12(s1)
-lw s3, 12(s1)
-sw s5, 8(s1)
-lw s4, 8(s1)
-addi s0, s0, -1
-jal LOOP
-DONE:
-
-machine code (swtest):
-
-00500413
-00000493
-00400a93
-02040263
-0154a223
-0044a903
-0154a623
-00c4a983
-0154a423
-0084aa03
-fff40413
-fe1ff0ef
+00 00 04 93
+00 00 00 13
+00 04 0c 63
+00 44 a9 03
+02 44 aa 03
+ff f4 04 13
+ff 1f f0 6f
+00 00 00 13
