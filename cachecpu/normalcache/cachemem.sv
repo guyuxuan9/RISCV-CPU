@@ -8,12 +8,15 @@ module cachemem#(
 );
 
 logic hit = 1'b0;
+logic tagCompare;
+logic vbit;
 
 logic [60-1:0] ram_array [2:0]; // [2**8 - 1:0]
 
 always_comb begin
-    if ((memaddr[31:5] ~^ ram_array[memaddr[4:2]][58:32]) & ram_array[memaddr[4:2]][59]);
-        hit = 1'b1;
+    tagCompare = (~(memaddr[31:5] ^ ram_array[memaddr[4:2]][58:32]));
+    vbit = ram_array[memaddr[4:2]][59];
+    hit = (tagCompare & vbit);
     if(hit)
         dataout = ram_array[memaddr[4:2]][31:0];
     else
@@ -24,3 +27,4 @@ always_comb begin
 end
 
 endmodule
+
