@@ -25,7 +25,9 @@ SL:
     SLLI s0, s0, 0x01       # shift left logical by 1
     addi zero,zero,0x00
     addi zero,zero,0x00
+    addi zero,zero,0x00
     addi s0, s0, 0x01       # increment by 1
+    addi zero,zero,0x00
     addi zero,zero,0x00
     addi zero,zero,0x00
     addi a0, s0, 0
