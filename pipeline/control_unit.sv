@@ -58,7 +58,6 @@ always_comb begin
         7'b1100011: // branch instructions
             begin 
             Branch = 1'b1;
-            
             case(funct3)
                 3'b000: // beq
                     begin
@@ -69,7 +68,7 @@ always_comb begin
                 3'b001: // bne
                     begin
                         ImmSrc = 3'b010;
-                        ALUControl = 3'b001;
+                        ALUControl = 3'b111;
                     end
 
             endcase

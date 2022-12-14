@@ -1,7 +1,7 @@
 pdf.out.reloc:     file format elf32-littleriscv
 
 // ISSUES:
-// jal instruction not returning to the address stored at ra
+// bne instruction not working
 
 Disassembly of section .text:
 
