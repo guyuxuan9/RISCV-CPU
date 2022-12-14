@@ -12,7 +12,7 @@ logic [DATA_WIDTH-1:0] rom_array [32'hBFC00FFF:32'hBFC00000]; // 12 bits
 initial begin
         
         $display("Loading rom.");
-        $readmemh("pdf_ref.mem", rom_array,32'hBFC00000);
+        $readmemh("F1.mem", rom_array,32'hBFC00000);
 end;
 
 assign RD = {rom_array [A], rom_array [A+1], rom_array [A+2], rom_array [A+3]};

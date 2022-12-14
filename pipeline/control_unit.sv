@@ -75,7 +75,7 @@ always_comb begin
             endcase
             end
             
-        7'b0100011: begin// store instructions
+        7'b0100011: begin  // store instructions
             ResultSrc = 2'b01;
             case(funct3)
                 3'b010: // sw
