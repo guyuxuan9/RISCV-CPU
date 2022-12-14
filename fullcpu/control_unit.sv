@@ -163,7 +163,6 @@ always_comb begin
 
                 3'b100: // lbu
                 begin
-                    ImmSrc = 3'b110;
                     ALUSrc = 1'b1;
                     ResultSrc = 1'b1;
                     RegWrite = 1'b1;
