@@ -11,6 +11,12 @@
 - Noisy pdf
 <video src= Videos/Noisy_pdf.mp4>
 
+- Noisy pdf
+
+https://user-images.githubusercontent.com/64958532/207710832-0634e5bf-9733-4dda-a14b-961a797c29c0.mp4
+
+
+
 
 
 ## F1 light on RISCV
