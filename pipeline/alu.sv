@@ -27,6 +27,8 @@ module alu #(
             3'b110: ALUResult  = ALUSrcA << ALUSrcB;
             // bne
             3'b111: ALUResult  = ALUSrcA - ALUSrcB;
+            // Instructions that only use SrcB, e.g. lui rd,upimm
+            3'b100: ALUResult = ALUSrcB;
 
         endcase
 

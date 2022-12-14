@@ -40,7 +40,7 @@ int main(int argc, char **argv, char **env) {
     if (simcyc < 2)  top->rst = 1;
     else               top->rst = 0;
     
-    if (simcyc > 124468)              // triangle:315970   sine: 37525    gaussian:124468
+    if (simcyc > 294048)              // triangle:315970   sine: 37525    gaussian:124468
       {vbdPlot(int(top->a0), 0, 255);
        vbdCycle(simcyc);}
 
