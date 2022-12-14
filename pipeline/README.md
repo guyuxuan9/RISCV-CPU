@@ -2,6 +2,14 @@
 - Gaussian pdf
 
 
+https://user-images.githubuse
+
+https://user-images.githubusercontent.com/64958532/207702541-58cfe6cc-d180-43e8-8e30-33b039ff5f8d.mp4
+
+rcontent.com/64958532/207702526-9bd0fa20-cb62-4cb5-af25-9b1337499bf7.mp4
+
+
+
 https://user-images.githubusercontent.com/58468284/207664582-ce2faf19-6280-46af-ae3f-1b6f330c6f39.mp4
 
 ## Summary
