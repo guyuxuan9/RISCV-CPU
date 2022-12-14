@@ -2,7 +2,7 @@
 #include "verilated_vcd_c.h"
 #include "Vpipelined_top.h"
 #include "vbuddy.cpp"                               // include vbuddy code
-#define MAX_SIM_CYC 350000
+#define MAX_SIM_CYC 1000000
 
 int main(int argc, char **argv, char **env) {
   int simcyc;                                       // simulation clock count
@@ -18,7 +18,7 @@ int main(int argc, char **argv, char **env) {
   tfp->open ("pipelined_top.vcd");
 
   if (vbdOpen()!=1) return(-1);
-  vbdHeader("Gaussian pdf");
+  vbdHeader("Noisy pdf");
   vbdSetMode(0);        // Flag mode set to one-shot
   
   top->rst = 1;
@@ -40,7 +40,7 @@ int main(int argc, char **argv, char **env) {
     if (simcyc < 2)  top->rst = 1;
     else               top->rst = 0;
     
-    if (simcyc > 294048)              // triangle:315970   sine: 37525    gaussian:124468
+    if (simcyc > 752814)              // gaussian: 294016; triangle: 750762; sine: 89354; noisy: 752814;
       {vbdPlot(int(top->a0), 0, 255);
        vbdCycle(simcyc);}
 

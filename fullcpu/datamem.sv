@@ -13,7 +13,7 @@ logic [DATA_WIDTH-1:0] ram_array [32'h1FFFF:32'h0]; // [2**8 - 1:0]
 
 initial begin
     $display("Loading data ram.");
-    $readmemh("gaussian.mem", ram_array, 32'h10000);
+    $readmemh("noisy.mem", ram_array, 32'h10000);
 end;
 
 // synchronous
