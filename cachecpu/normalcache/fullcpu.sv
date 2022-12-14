@@ -21,6 +21,7 @@ logic [31:0]            PC;
 logic                   jalmuxSel;
 logic                   jalrmuxSel;     //  =1 if the instruction is jalr, =0 otherwise
 logic [31:0]            rd1;
+logic                   cache_WE;
 
 top blue(
     .PCSrc(PCSrc),
@@ -47,7 +48,8 @@ control_unit controlunit(
     .ResultSrc(ResultSrc),
     .PCSrc(PCSrc),
     .jalmuxSel(jalmuxSel),
-    .jalrmuxSel(jalrmuxSel)
+    .jalrmuxSel(jalrmuxSel),
+    .cache_WE(cache_WE)
 );
 
 sign_extend signextend (
@@ -61,6 +63,7 @@ topregalu topregalu (
     .rs1(Instr[19:15]),
     .rs2(Instr[24:20]),
     .rd(Instr[11:7]),
+    .cache_WE(cache_WE),
     .RegWrite(RegWrite),
     .ALUSrc(ALUSrc),
     .ResultSrc(ResultSrc),

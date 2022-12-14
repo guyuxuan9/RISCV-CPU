@@ -15,6 +15,7 @@ module topregalu #(
     input logic        [DATA_WIDTH-1:0]              ImmOp,
     input logic        [31:0]                        PC,
     input logic                                      jalmuxSel, // select for the jalmux
+    input logic                                      cache_WE,
     output logic                                     eq,
     output logic       [DATA_WIDTH-1:0]              a0,
     output logic       [DATA_WIDTH-1:0]              rd1
@@ -58,7 +59,9 @@ mux MUX(
 
 cachemem cachemem(
     .memaddr(ALUout),
+    .clk(clk),
     .inputdata(OutputData),
+    .cache_WE(cache_WE),
     .dataout(ReadData)
 );
 

@@ -14,7 +14,8 @@ module control_unit #(
     output logic                ResultSrc,
     output logic                PCSrc,
     output logic                jalmuxSel,
-    output logic                jalrmuxSel
+    output logic                jalrmuxSel,
+    output logic                cache_WE
 );
 
 always_comb begin
@@ -29,6 +30,7 @@ always_comb begin
     PCSrc = 1'b0; 
     jalmuxSel = 1'b0;
     jalrmuxSel = 1'b0;
+    cache_WE = 1'b0;
 
     /* if(op == 7'b0110011) // 3 Register Instructions
         if(funct7 == 0)
@@ -159,6 +161,7 @@ always_comb begin
                     ImmSrc = 3'b000;
                     ALUControl = 3'b000;
                     ALUSrc = 1'b1;
+                    cache_WE = 1'b1;
                 end 
 
                 3'b100: // lbu
@@ -167,6 +170,7 @@ always_comb begin
                     ALUSrc = 1'b1;
                     ResultSrc = 1'b1;
                     RegWrite = 1'b1;
+                    cache_WE = 1'b1;
                 end
             endcase
         
