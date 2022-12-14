@@ -18,7 +18,7 @@ int main(int argc, char **argv, char **env) {
   tfp->open ("fullcpu.vcd");
 
   if (vbdOpen()!=1) return(-1);
-  vbdHeader("Triangle pdf");
+  vbdHeader("Noisy pdf");
   vbdSetMode(0);        // Flag mode set to one-shot
   
   top->rst = 1;
@@ -40,7 +40,7 @@ int main(int argc, char **argv, char **env) {
     if (simcyc < 2)  top->rst = 1;
     else               top->rst = 0;
 
-    if (simcyc > 315970)                  // triangle:315970;  sine: 37525;  gaussian:124468; noisy: 
+    if (simcyc > 207200)                  // triangle:315970;  sine: 37525;  gaussian:124468; noisy: 207200
       {vbdPlot(int(top->a0),0,255);
        vbdCycle(simcyc);}
 

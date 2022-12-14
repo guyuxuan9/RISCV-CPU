@@ -1,15 +1,15 @@
 ## Reference Program on RISCV
 - Gaussian pdf
-
-https://user-images.githubusercontent.com/58468284/207162252-43228df0-f916-4f4a-895d-2caff70209d4.mp4
+<video src= Videos/Gaussian_pdf.mp4>
 
 - Sine pdf
-
-https://user-images.githubusercontent.com/58468284/207162372-8aa8d2d8-aa75-4d27-8103-b9814820c2d8.mp4
+<video src= Videos/Sine_pdf.mp4>
 
 - Triangle pdf
+<video src= Videos/Triangle_pdf.mp4>
 
-https://user-images.githubusercontent.com/58468284/207163327-d4dd6be3-fde1-4525-b1a9-05617f1507f8.mp4
+- Noisy pdf
+<video src= Videos/Noisy_pdf.mp4>
 
 
 

@@ -3,14 +3,16 @@
 https://user-images.githubusercontent.com/58468284/207664582-ce2faf19-6280-46af-ae3f-1b6f330c6f39.mp4
 
 - Triangle pdf
-https://user-images.githubusercontent.com/64958532/207703068-90973e34-e582-43cb-97a7-0e39b7780d78.mp4
+
+<video src= videos/trianglepdf.mp4>
 
 - Sine pdf
-https://user-images.githubusercontent.com/64958532/207702526-9bd0fa20-cb62-4cb5-af25-9b1337499bf7.mp4
 
+<video src= videos/sinepdf.mp4>
 
 - Noisy pdf
-https://user-images.githubusercontent.com/64958532/207702541-58cfe6cc-d180-43e8-8e30-33b039ff5f8d.mp4
+
+<video src= videos/noisypdf.mp4>
 
 
 ## Summary
