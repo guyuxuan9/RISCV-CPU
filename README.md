@@ -7,3 +7,18 @@ Next, we implemented pipelining, for which we divided the tasks into four parts:
 Then we tested the reference given to us on both the single-cycle CPU and the pipelined CPU. Yuxuan tested and made the refernce work on our single-cycle CPU, and Shinde did the same for the pipelined CPU.
 
 Lastly, we implemented cache memory, both directly mapped and 2-way associative mapped. Zach implemented the directly mapped cache memory, Johanna implemented the 2-way associative cache memory, and then they both tested and modified both.
+
+| Module                     | Yu Xuan | Shinde | Johanna | Zachary |
+| -------------------------- | ------- | ------ | ------- | ------- |
+| PC                         |         |        |         |         |
+| Instr Mem                  |         |        |         |         |
+| Contrul Unit               |         |        |         |         |
+| Register File              |         |        |         |         |
+| ALU                        |         |        |         |         |
+| Instruction Memory         |         |        |         |         |
+| F1 Testing                 |         |        |         |         |
+| Pipelining                 |         |        |         |         |
+| Directly Mapped Cache      |         |        |         |         |
+| 2-Way Associative Cache    |         |        |         |         |
+| Test Pipeline w/ Reference |         |        |         |         |
+|                            |         |        |         |         |
