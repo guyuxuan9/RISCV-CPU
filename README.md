@@ -8,18 +8,22 @@ Then we tested the reference given to us on both the single-cycle CPU and the pi
 
 Lastly, we implemented cache memory, both directly mapped and 2-way associative mapped. Zach implemented the directly mapped cache memory, Johanna implemented the 2-way associative cache memory, and then they both tested and modified both.
 
-| Module                     | Yu Xuan | Shinde | Johanna | Zachary |
-| -------------------------- | ------- | ------ | ------- | ------- |
-| PC                         |         |        |         |         |
-| Instr Mem                  |         |        |         |         |
-| Contrul Unit               |         |        |         |         |
-| Register File              |         |        |         |         |
-| ALU                        |         |        |         |         |
-| Sign Extend                |         |        |         |         |
-| Instruction Memory         |         |        |         |         |
-| F1 Testing                 |         |        |         |         |
-| Pipelining                 |         |        |         |         |
-| Directly Mapped Cache      |         |        |         |         |
-| 2-Way Associative Cache    |         |        |         |         |
-| Test Pipeline w/ Reference |         |        |         |         |
-|                            |         |        |         |         |
+| Module                     | Yuxuan | Shinde | Johanna | Zachary |
+| -------------------------- | ------ | ------ | ------- | ------- |
+| PC                         | \*     |        |         |         |
+| Instr Mem                  | \*     |        |         |         |
+| Control Unit               | x      | x      | x       | \*      |
+| Data Mem                   | x      | x      | x       | \*      |
+| Register File              |        | \*     |         |         |
+| ALU                        | x      | \*     |         | x       |
+| Sign Extend                | x      | x      | \*      |         |
+| F1 Machine Code            | x      | \*     | x       |         |
+| F1 Testing                 | x      | x      | x       | x       |
+| Pipelining Registers       | x      | \*     |         |         |
+| Pipelining Control Unit    | \*     | x      |         | x       |
+| Pipelining Top             | \*     |        | x       | x       |
+| Control Hazard             | x      | x      | \*      |         |
+| Data Hazard                | x      | x      |         | \*      |
+| Directly Mapped Cache      | x      |        | x       | \*      |
+| 2-Way Associative Cache    | x      |        | \*      | x       |
+| Test Pipeline w/ Reference | \*     | \*     | x       | x       |
