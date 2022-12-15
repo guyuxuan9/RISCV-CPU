@@ -39,8 +39,7 @@ Register file is written on falling edge of CLK
 
 2. Control Hazard
 - Next instruction not decided yet (caused by branch)
-    beq, bne:
-(a) 
+    beq, bne
 
 ## Sample
 ![image](https://user-images.githubusercontent.com/58468284/205861052-39326a98-bbf0-4428-95f8-4ff8f7ecbdb9.png)
