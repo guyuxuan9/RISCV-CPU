@@ -64,7 +64,7 @@ https://user-images.githubusercontent.com/64958532/207710832-0634e5bf-9733-4dda-
     10:  addi t0, zero, 0x08     # initialize t0 to 0x08
     14:  JAL a3, iloop
     ```
-    <img src=images/image1.png>
+    <img src=Images/image1.png>
 
     ```
     iloop:                         # acts as a for loop (with size = 8)
@@ -82,8 +82,8 @@ https://user-images.githubusercontent.com/64958532/207710832-0634e5bf-9733-4dda-
     34:    JALR a5, a1, 0          # return to address stored in a1 
     ```
     \
-    <img src=images/image2.png>
-    <img src=images/image3.png>
+    <img src=Images/image2.png>
+    <img src=Images/image3.png>
     
 
 - Explanation:
@@ -91,25 +91,25 @@ https://user-images.githubusercontent.com/64958532/207710832-0634e5bf-9733-4dda-
     ![image](https://user-images.githubusercontent.com/58468284/205463858-0ff2d871-4de5-4b6d-b72a-2ad9309ff65a.png)
 
     - a1 stores the next address of JAL instruction in iloop, i.e. 0x24
-    <img src=images/image4.png> 
+    <img src=Images/image4.png> 
 
     - a2 indicates the state of F1 light. a2 should go from 0 to 8 with increment of 1 each time
     ![image](https://user-images.githubusercontent.com/58468284/205463917-1c5f09f1-3762-4d99-8d8d-2aecf996a1a9.png)
 
     - a3 stores the address of iloop, as it is the next address of JAL instruction in main. (i.e. 0x18)
-    <img src=images/image6.png>
+    <img src=Images/image6.png>
 
     - a4 stores the address of the next address of JALR instruction in iloop, which is SL. (i.e. 0x28)
-    <img src=images/image7.png>
+    <img src=Images/image7.png>
 
     - a5 stores the address of the next address of JALR instruction in SL. (i.e. 0x38)
-    <img src=images/image8.png>
+    <img src=Images/image8.png>
 
     - s0 stores intermediate values of a0 (shift left and plus 1)
-    <img src=images/image9.png>
+    <img src=Images/image9.png>
 
     - t0 stores the size of the for loop (iloop), i.e. 0x08
-    <img src=images/image5.png> 
+    <img src=Images/image5.png> 
 
 - **Return** to the next instruction of JAL is implemented by **JALR**. E.g. 
 ``` 
