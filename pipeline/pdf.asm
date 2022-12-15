@@ -1,105 +1,76 @@
-
-pdf.out.reloc:     file format elf32-littleriscv
-
-
 Disassembly of section .text:
 
-bfc00000 <main> (File Offset: 0x1000):
-main():
-bfc00000:	010000ef          	jal	ra,bfc00010 <init> (File Offset: 0x1010)
-                              addi zero, zero, 0
-bfc00004:	020000ef          	jal	ra,bfc00024 <build> (File Offset: 0x1024)
-                              addi zero, zero, 0
+0000000000000000 <_main>:
+   0:	020000ef          	jal	ra,20 <_init>
+   4:	00000013          	nop
+   8:	04c000ef          	jal	ra,54 <_build>
+   c:	00000013          	nop
 
-bfc00008 <forever> (File Offset: 0x1008):
-forever():
-bfc0000c:	050000ef          	jal	ra,bfc00058 <display> (File Offset: 0x1058)
-                              addi zero, zero, 0
-bfc00010:	ffdff06f          	jal	zero,bfc00008 <forever> (File Offset: 0x1008)
-                              addi zero, zero, 0
+0000000000000010 <_forever>:
+  10:	0a8000ef          	jal	ra,b8 <_display>
+  14:	00000013          	nop
+  18:	ff9ff06f          	j	10 <_forever>
+  1c:	00000013          	nop
 
-bfc00014 <init> (File Offset: 0x1010):
-init():
-bfc00018:	10000593          	addi	a1,zero,256
-                              addi zero, zero, 0
-                              addi zero, zero, 0
+0000000000000020 <_init>:
+  20:	10000593          	li	a1,256
+  24:	00000013          	nop
+  28:	00000013          	nop
 
-bfc00014 <_loop1> (File Offset: 0x1014):
-_loop1():
-bfc00014:	fff58593          	addi	a1, a1, -1
-                              addi zero, zero, 0
-                              addi zero, zero, 0
-bfc00018:	10058023          	sb	zero, 256(a1)
-                              addi zero, zero, 0
-                              addi zero, zero, 0
-bfc0001c:	fe059ce3          	bne	a1,zero,bfc00014 <_loop1> (File Offset: 0x1014)
-                              addi zero, zero, 0
-                              addi zero, zero, 0
-bfc00020:	00008067          	jalr	zero,0(ra)
-                              addi zero, zero, 0
+000000000000002c <_loop1>:
+  2c:	fff58593          	addi	a1,a1,-1
+  30:	00000013          	nop
+  34:	00000013          	nop
+  38:	10058023          	sb	zero,256(a1)
+  3c:	00000013          	nop
+  40:	00000013          	nop
+  44:	fe0594e3          	bnez	a1,2c <_loop1>
+  48:	00000013          	nop
+  4c:	00008067          	ret
+  50:	00000013          	nop
 
-bfc00024 <build> (File Offset: 0x1024):
-build():
-bfc00024:	000105b7          	lui	a1,0x10
-bfc00028:	00000613          	addi	a2,zero,0
-bfc0002c:	10000693          	addi	a3,zero,256
-bfc00030:	0c800713          	addi	a4,zero,200
+0000000000000054 <_build>:
+  54:	000105b7          	lui	a1,0x10
+  58:	00000613          	li	a2,0
+  5c:	10000693          	li	a3,256
+  60:	0c800713          	li	a4,200
 
-bfc00034 <_loop2> (File Offset: 0x1034):
-_loop2():
-bfc00034:	00c587b3          	add	a5,a1,a2
-                              addi zero, zero, 0
-                              addi zero, zero, 0
-bfc00038:	0007c283          	lbu	t0,0(a5)
-                              addi zero, zero, 0
-                              addi zero, zero, 0
-bfc0003c:	00d28833          	add	a6,t0,a3
-                              addi zero, zero, 0
-                              addi zero, zero, 0
-bfc00040:	00084303          	lbu	t1,0(a6)
-                              addi zero, zero, 0
-                              addi zero, zero, 0
-bfc00044:	00130313          	addi	t1,t1,1
-                              addi zero,zero,0
-                              addi zero,zero,0
-bfc00048:	00680023          	sb	t1,0(a6)
-bfc0004c:	00160613          	addi	a2,a2,1
-bfc00050:	fee312e3          	bne	t1,a4,bfc00034 <_loop2> (File Offset: 0x1034)
-bfc00054:	00008067          	jalr	zero,0(ra)
+0000000000000064 <_loop2>:
+  64:	00c587b3          	add	a5,a1,a2
+  68:	00000013          	nop
+  6c:	00000013          	nop
+  70:	0007c283          	lbu	t0,0(a5)
+  74:	00000013          	nop
+  78:	00000013          	nop
+  7c:	00d28833          	add	a6,t0,a3
+  80:	00000013          	nop
+  84:	00000013          	nop
+  88:	00084303          	lbu	t1,0(a6)
+  8c:	00000013          	nop
+  90:	00000013          	nop
+  94:	00130313          	addi	t1,t1,1
+  98:	00000013          	nop
+  9c:	00000013          	nop
+  a0:	00680023          	sb	t1,0(a6)
+  a4:	00160613          	addi	a2,a2,1
+  a8:	fae31ee3          	bne	t1,a4,64 <_loop2>
+  ac:	00000013          	nop
+  b0:	00008067          	ret
+  b4:	00000013          	nop
 
-bfc00058 <display> (File Offset: 0x1058):
-display():
-bfc00058:	00000593          	addi	a1,zero,0
-                              addi zero, zero, 0
-bfc0005c:	0ff00613          	addi	a2,zero,255
+00000000000000b8 <_display>:
+  b8:	00000593          	li	a1,0
+  bc:	00000013          	nop
+  c0:	0ff00613          	li	a2,255
 
-bfc00060 <_loop3> (File Offset: 0x1060):
-_loop3():
-bfc00060:	1005c503          	lbu	a0,256(a1) # 10100 <base_data+0x100> (File Offset: 0xffffffff40411100)
-bfc00064:	00158593          	addi	a1,a1,1
-bfc00068:                     addi zero,zero,0
-bfc0006c:                     addi zero,zero,0
-bfc00068:	fec59ce3          	bne	a1,a2,bfc00060 <_loop3> (File Offset: 0x1060)
-                              addi zero, zero, 0
-                              addi zero, zero, 0
-bfc0006c:	00008067          	jalr	zero, 0(ra)
-                              addi zero, zero, 0
-
-Disassembly of section .riscv.attributes:
-
-00000000 <.riscv.attributes> (File Offset: 0x1070):
-   0:	1e41                	.2byte	0x1e41
-   2:	0000                	.2byte	0x0
-   4:	7200                	.2byte	0x7200
-   6:	7369                	.2byte	0x7369
-   8:	01007663          	bgeu	zero,a6,14 <max_count-0xb4> (File Offset: 0x1084)
-   c:	0014                	.2byte	0x14
-   e:	0000                	.2byte	0x0
-  10:	7205                	.2byte	0x7205
-  12:	3376                	.2byte	0x3376
-  14:	6932                	.2byte	0x6932
-  16:	7032                	.2byte	0x7032
-  18:	5f30                	.2byte	0x5f30
-  1a:	326d                	.2byte	0x326d
-  1c:	3070                	.2byte	0x3070
-	...
+00000000000000c4 <_loop3>:
+  c4:	1005c503          	lbu	a0,256(a1) # 10100 
+  c8:	00000013          	nop
+  cc:	00000013          	nop
+  d0:	00158593          	addi	a1,a1,1
+  d4:	00000013          	nop
+  d8:	00000013          	nop
+  dc:	fec594e3          	bne	a1,a2,c4 <_loop3>
+  e0:	00000013          	nop
+  e4:	00008067          	ret
+  e8:	00000013          	nop

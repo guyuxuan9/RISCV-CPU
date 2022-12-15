@@ -8,7 +8,7 @@ module sign_extend #(
 
 always_comb begin
     case(ImmSrc)
-        // I-type
+        // I-type 
         3'b000: ImmExt[31:0] = {{20{instr[ADDRESS_WIDTH-1]}}, instr[ADDRESS_WIDTH-1:20]};
         // S-type
         3'b001: ImmExt[31:0] = {{20{instr[ADDRESS_WIDTH-1]}}, instr[ADDRESS_WIDTH-1:25], instr[11:7]};
@@ -19,7 +19,7 @@ always_comb begin
         // J-type
         3'b100: ImmExt[31:0] = {{12{instr[31]}}, instr[19:12], instr[20], instr[30:21], 1'b0};
         // U-type
-        3'b101: ImmExt[31:0] = {instr[31:12], {12{instr[12]}}};
+        3'b101: ImmExt[31:0] = {instr[31:12], {12'b0}};
     endcase
     
 end

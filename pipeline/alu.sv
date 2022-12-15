@@ -25,17 +25,29 @@ module alu #(
             3'b101: ALUResult  = ALUSrcA ^ ALUSrcB;
             // SLL
             3'b110: ALUResult  = ALUSrcA << ALUSrcB;
-            // SRL
-            3'b111: ALUResult  = ALUSrcA >> ALUSrcB;
+            // bne
+            3'b111: ALUResult  = ALUSrcA - ALUSrcB;
+            // Instructions that only use SrcB, e.g. lui rd,upimm
+            3'b100: ALUResult = ALUSrcB;
 
         endcase
+
+        if ((ALUControl == 3'b001) & (ALUResult == 0))
+            Zero = 1;
         
-        // Zero
+        if ((ALUControl == 3'b111) & (ALUResult != 0))
+            Zero = 1;
+        else
+            Zero = 0;
+
+
+        /* Zero
         if(ALUSrcA == ALUSrcB)
             Zero = 1;
         else 
             Zero = 0;
-        
+        */
+
     end
 
 endmodule

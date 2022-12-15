@@ -19,7 +19,8 @@ module Decode #(
     output logic [2:0]                      ALUControlD,
     output logic                            ALUSrcD,
     output logic                            jalrmuxSelD,
-    output logic [DATA_WIDTH-1:0]           ImmExtD
+    output logic [DATA_WIDTH-1:0]           ImmExtD,
+    output logic                            cache_WE
 );
 
 logic [2:0]                           ImmSrcD;
@@ -36,7 +37,8 @@ control_unit cu(
     .ALUControl(ALUControlD),
     .ALUSrc(ALUSrcD),
     .ImmSrc(ImmSrcD),
-    .JalrmuxSel(jalrmuxSelD)
+    .JalrmuxSel(jalrmuxSelD),
+    .cache_WE(cache_WE)
 );
 
 regfile RegFile(

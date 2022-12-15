@@ -2,7 +2,6 @@
 .equ base_pdf, 0x100
 .equ base_data, 0x10000
 .equ max_count, 200
-
 main:
     JAL     ra, init  # jump to init, ra and save position to ra
     JAL     ra, build
@@ -11,17 +10,16 @@ forever:
     J       forever
 
 init:       # function to initialise PDF buffer memory 
-    LI      a1, 0xff            # loop_count a1 = 255
-
+    LI      a1, 0x100           # loop_count a1 = 256
 _loop1:                         # repeat
-    SB      zero, base_pdf(a1)  #     mem[base_pdf+a1) = 0
     ADDI    a1, a1, -1          #     decrement a1
+    SB      zero, base_pdf(a1)  #     mem[base_pdf+a1) = 0
     BNE     a1, zero, _loop1    # until a1 = 0
     RET
 
 build:      # function to build prob dist func (pdf)
     LI      a1, base_data       # a1 = base address of data array
-    LI      a2, 0               # a2 = offset into of data array
+    LI      a2, 0               # a2 = offset into of data array 
     LI      a3, base_pdf        # a3 = base address of pdf array
     LI      a4, max_count       # a4 = maximum count to terminate
 _loop2:                         # repeat
@@ -38,10 +36,8 @@ _loop2:                         # repeat
 display:    # function send PDF array value to a0 for display
     LI      a1, 0               # a1 = offset into pdf array
     LI      a2, 255             # a2 = max index of pdf array
-
 _loop3:                         # repeat
     LBU     a0, base_pdf(a1)    #   a0 = mem[base_pdf+a1)
     addi    a1, a1, 1           #   incr 
     BNE     a1, a2, _loop3      # until end of pdf array
     RET
-    

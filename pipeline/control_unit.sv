@@ -58,7 +58,6 @@ always_comb begin
         7'b1100011: // branch instructions
             begin 
             Branch = 1'b1;
-            
             case(funct3)
                 3'b000: // beq
                     begin
@@ -69,18 +68,17 @@ always_comb begin
                 3'b001: // bne
                     begin
                         ImmSrc = 3'b010;
-                        ALUControl = 3'b001;
+                        ALUControl = 3'b111;
                     end
 
             endcase
             end
             
-        7'b0100011: begin// store instructions
+        7'b0100011: begin  // store instructions
             ResultSrc = 2'b01;
             case(funct3)
                 3'b010: // sw
                 begin
-                    ResultSrc = 1'b1;
                     MemWrite = 1'b1;
                     ImmSrc = 3'b001;
                     ALUControl = 3'b000;
@@ -103,16 +101,13 @@ always_comb begin
                 3'b010: // lw
                 begin
                     RegWrite = 1'b1;
-                    ImmSrc = 3'b000;
                     ALUControl = 3'b000;
                     ALUSrc = 1'b1;
                 end
 
                 3'b100: // lbu
                 begin
-                    ImmSrc = 3'b110;
                     ALUSrc = 1'b1;
-                    ResultSrc = 1'b1;
                     RegWrite = 1'b1;
                 end
             endcase
@@ -151,7 +146,7 @@ always_comb begin
                 3'b000: // add
                 begin
                     RegWrite = 1'b1;
-                    ResultSrc = 1'b0;
+                    ResultSrc = 2'b00;
                 end
             endcase
     endcase
