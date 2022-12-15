@@ -1,15 +1,20 @@
 ## Reference Program on RISCV
 - Gaussian pdf
-<video src= Videos/Gaussian_pdf.mp4>
+
+[![](https://user-images.githubusercontent.com/58468284/207980451-7a0e0250-d78d-4575-bf94-9124c4327380.png)](https://www.youtube.com/watch?v=6v4nV9u5a08)
 
 - Sine pdf
-<video src= Videos/Sine_pdf.mp4>
+
+[![](https://user-images.githubusercontent.com/58468284/207980852-0ca6731b-84cf-44cc-b96e-64ac6292e51d.png)](https://www.youtube.com/watch?v=A6wL00NSPFQ)
 
 - Triangle pdf
-<video src= Videos/Triangle_pdf.mp4>
+
+[![](https://user-images.githubusercontent.com/58468284/207981083-436b6970-5430-44f5-9b6c-bb6510d1cf2b.png)](https://www.youtube.com/shorts/xmVOUJP9MiE)
+
 
 - Noisy pdf
-<video src= Videos/Noisy_pdf.mp4>
+
+[![](https://user-images.githubusercontent.com/58468284/207981336-0c877cf4-a2b6-4423-86a1-f53f471d482c.jpg)](https://www.youtube.com/shorts/HUxNcOe1PN4)
 
 ## F1 light on RISCV
 - Python program:
