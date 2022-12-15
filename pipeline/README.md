@@ -11,7 +11,6 @@ https://user-images.githubusercontent.com/58468284/207664582-ce2faf19-6280-46af-
 <video src= videos/sinepdf.mp4>
 
 - Noisy pdf
-
 <video src= videos/noisypdf.mp4>
 
 
