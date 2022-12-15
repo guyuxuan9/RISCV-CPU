@@ -1,17 +1,21 @@
 ## Reference program
 - Gaussian pdf
-https://user-images.githubusercontent.com/58468284/207664582-ce2faf19-6280-46af-ae3f-1b6f330c6f39.mp4
+
+[![](https://user-images.githubusercontent.com/58468284/207982257-ae35cf41-593f-4d31-a1d5-020aa2eab2e8.png)](https://www.youtube.com/shorts/aaOBhFDiVVo)
+
 
 - Triangle pdf
 
-<video src= videos/trianglepdf.mp4>
+[![](https://user-images.githubusercontent.com/58468284/207982411-7611befe-f9e7-4183-a3f4-328eb7423db6.png)](https://www.youtube.com/shorts/EHbCkdSwqxY)
 
 - Sine pdf
 
-<video src= videos/sinepdf.mp4>
+[![](https://user-images.githubusercontent.com/58468284/207982606-a823344d-8c5c-41bb-9c3c-fd27c6e1a410.png)](https://www.youtube.com/shorts/f8KAQsSRfBo)
 
 - Noisy pdf
-<video src= videos/noisypdf.mp4>
+
+[![](https://user-images.githubusercontent.com/58468284/207982715-65425d3d-d6f9-442d-8d42-d6c8a8e4ea04.png)](https://www.youtube.com/shorts/nUaZ_FC3nOw)
+
 
 
 ## Summary
