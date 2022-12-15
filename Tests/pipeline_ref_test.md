@@ -1,17 +1,14 @@
 ## Reference program
 - Gaussian pdf
-https://user-images.githubusercontent.com/58468284/207664582-ce2faf19-6280-46af-ae3f-1b6f330c6f39.mp4
+<video src= videos/Gaussianpdf_pipelined.mp4>
 
 - Triangle pdf
-
 <video src= videos/trianglepdf.mp4>
 
 - Sine pdf
-
 <video src= videos/sinepdf.mp4>
 
 - Noisy pdf
-
 <video src= videos/noisypdf.mp4>
 
 
