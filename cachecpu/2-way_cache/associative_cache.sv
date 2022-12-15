@@ -59,7 +59,7 @@ always_ff @(posedge clk) begin
         ram_array[memaddr[3:2]][121] <= 1'b1;
     end
     
-    if (hit1 == 1'b0 & cache_WE == 1'b1)
+    if (hit0 == 1'b0 & cache_WE == 1'b1)
     begin
         ram_array[memaddr[3:2]][31:0] <= inputdata;
         ram_array[memaddr[3:2]][59:32] <= memaddr[31:4];
