@@ -9,7 +9,7 @@ module cachemem#(
 
 logic hit = 1'b0;
 logic tagCompare;
-logic vbit;
+logic vbit = 1'b0;
 
 logic [60-1:0] ram_array [2:0]; // [2**8 - 1:0]
 
